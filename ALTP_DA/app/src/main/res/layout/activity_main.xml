@@ -38,33 +38,23 @@
         app:layout_constraintTop_toBottomOf="@+id/txtTK" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnDangNhap"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
-        android:text="Button"
+        android:text="Đăng nhập"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtMK" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnDangky"
         android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginTop="20dp"
-        android:text="Button"
+        android:text="Đăng ký"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="216dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </LinearLayout>
