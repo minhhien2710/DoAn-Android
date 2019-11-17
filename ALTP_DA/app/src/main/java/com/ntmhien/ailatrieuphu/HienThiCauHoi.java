@@ -63,10 +63,10 @@ public class HienThiCauHoi extends AppCompatActivity {
         {
             txtSttCau.setText(""+(stt++));
             txtCauHoi.setText(cauHoi.getCauhoi());
-            btnPanA.setText(btnPanA.getText()+" "+cauHoi.getPhuonganA());
-            btnPanB.setText(btnPanB.getText()+" "+cauHoi.getPhuonganB());
-            btnPanC.setText(btnPanC.getText()+" "+cauHoi.getPhuonganC());
-            btnPanD.setText(btnPanD.getText()+" "+cauHoi.getPhuonganD());
+            btnPanA.setText("A. "+cauHoi.getPhuonganA());
+            btnPanB.setText("B. "+cauHoi.getPhuonganB());
+            btnPanC.setText("C. "+cauHoi.getPhuonganC());
+            btnPanD.setText("D. "+cauHoi.getPhuonganD());
         }
         else
         {
