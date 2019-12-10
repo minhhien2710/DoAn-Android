@@ -1,60 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:background="#98BDDA"
+    tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="278dp"
-        app:srcCompat="@mipmap/logo_altp_foreground" />
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/txtTK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Tên đăng nhập"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="278dp"
+            app:srcCompat="@mipmap/logo_altp_foreground" />
 
-    <EditText
-        android:id="@+id/txtMK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Mật khẩu"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTK" />
+        <EditText
+            android:layout_marginBottom="5dp"
+            android:id="@+id/txtTK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_border"
+            android:ems="10"
+            android:hint="Tên đăng nhập"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnDangNhap"
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:text="Đăng nhập"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtMK" />
+        <EditText
+            android:layout_marginBottom="20dp"
+            android:id="@+id/txtMK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/txt_border"
+            android:ems="10"
+            android:hint="Mật khẩu"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTK" />
 
-    <Button
-        android:id="@+id/btnDangky"
-        android:layout_width="215dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:text="Đăng ký"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        <Button
+            android:layout_marginBottom="5dp"
+            android:id="@+id/btnDangNhap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_radius_blue"
+            android:text="Đăng nhập"
+            android:textColor="#F7F1F1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMK" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnDangky"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_radius_blue"
+            android:text="Đăng ký"
+            android:textColor="#F1F4F7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnDangNhap" />
+    </LinearLayout>
+
+</RelativeLayout>
