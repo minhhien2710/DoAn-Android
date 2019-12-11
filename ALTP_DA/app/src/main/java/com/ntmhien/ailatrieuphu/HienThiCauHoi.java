@@ -32,7 +32,7 @@ public class HienThiCauHoi extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hien_thi_cau_hoi);
+        setContentView(R.layout.activity_cauhoi);
 
         Log.v("Log", GetContentDataQuestion());
 
