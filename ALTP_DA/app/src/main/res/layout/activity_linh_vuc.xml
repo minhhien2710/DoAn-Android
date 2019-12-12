@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="200dp"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="50dp"
             android:orientation="vertical">
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:text="Lĩnh Vực"
+                android:text="Chọn lĩnh vực"
                 android:textAlignment="center"
                 android:textSize="30sp" />
 
@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_radius_red"
-                android:text="Quản lý tài khoản"
+                android:text="Khoa học kĩ thuật"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_radius_blue"
-                android:text="Trò chơi mới"
+                android:text="Văn hóa-xã hội-nghệ thuật"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_radius_green"
-                android:text="Lịch sử chơi"
+                android:text="Lịch sử địa lý"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
@@ -156,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:background="@drawable/btn_radius_yell"
-                android:text="Bảng xếp hạng"
+                android:text="Thể thao"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
@@ -165,7 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/btn_radius_pur"
-                android:text="Mua Credit"
+                android:text="Ngẫu nhiên"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
 
