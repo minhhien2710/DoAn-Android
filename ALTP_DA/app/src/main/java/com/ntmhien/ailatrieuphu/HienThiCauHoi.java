@@ -64,7 +64,7 @@ public class HienThiCauHoi extends AppCompatActivity {
         Intent intent = getIntent();
         String jSonString = intent.getStringExtra("message");
         if (get_lst_cauhoi(jSonString) == true) {
-            m_txt_num.setText("Câu hỏi 1:");
+            m_txt_num.setText("Câu: 1");
             m_txt_content.setText(lst_cauhoi.get(0).NoiDung);
             m_DA1.setText("A. " + lst_cauhoi.get(0).PhuongAn1);
             m_DA2.setText("B. " + lst_cauhoi.get(0).PhuongAn2);
@@ -83,7 +83,7 @@ public class HienThiCauHoi extends AppCompatActivity {
 
     public void ShowQuestion(int pos) {
         int dem = pos + 1;
-        m_txt_num.setText("Câu hỏi " + dem + ":");
+        m_txt_num.setText("Câu: " + dem);
         m_txt_content.setText(lst_cauhoi.get(pos).NoiDung);
         m_DA1.setText("A. " + lst_cauhoi.get(pos).PhuongAn1);
         m_DA2.setText("B. " + lst_cauhoi.get(pos).PhuongAn2);

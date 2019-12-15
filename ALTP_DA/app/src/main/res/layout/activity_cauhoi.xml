@@ -52,12 +52,10 @@
 
                 <ProgressBar
                     android:id="@+id/timeProgressBar"
-                    style="@style/RtlOverlay.Widget.AppCompat.DialogTitle.Icon"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:indeterminate="false"
-                    android:max="30"/>
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:indeterminateDrawable="@drawable/progressbar_time" />
 
                 <TextView
                     android:id="@+id/txtTime"
@@ -157,7 +155,7 @@
                 android:layout_height="250dp"
                 android:background="@drawable/text5"
                 android:gravity="center"
-                android:padding="15dp"
+                android:padding="40dp"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="18sp"
                 android:text="Nội dung câu hỏi"
