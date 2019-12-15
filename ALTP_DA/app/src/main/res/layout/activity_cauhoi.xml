@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:id="@+id/play_layout_actionbar"
-            android:background="@drawable/atp__dialog_confirm_background"
+            android:background="@drawable/atp__dialog_confirm_background2"
             android:weightSum="3"
             >
             <RelativeLayout
@@ -147,19 +147,20 @@
         <FrameLayout
             android:id="@+id/play_layout_frameLayout"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:layout_below="@+id/play_layout_table1">
+
 
             <TextView
                 android:id="@+id/txtCauHoi"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@drawable/atp__activity_player_layout_play_question_background"
+                android:background="@drawable/text5"
                 android:gravity="center"
                 android:padding="15dp"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="18sp"
+                android:text="Nội dung câu hỏi"
                 android:textStyle="bold" />
 
             <TextView
@@ -169,7 +170,7 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/atp__activity_player_layout_play_order_question"
+                android:background="@drawable/atp__activity_player_layout_play_order_question2"
                 android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textSize="24sp" />
@@ -181,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="50dp"
             android:gravity="center"
             android:orientation="vertical"
             android:weightSum="4">
@@ -190,7 +191,6 @@
                 android:id="@+id/A"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/level_click_bg"
