@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:background="@drawable/player_layout_help_call_audience_background2"
+        android:background="@drawable/player_layout_help_call_audience_background3"
         android:layout_width="match_parent"
         android:layout_height="300dp">
 
@@ -173,7 +173,7 @@
             android:layout_centerHorizontal="true"
             android:textColor="#ffffff"
             android:textAllCaps="false"
-            android:background="@drawable/dialog_confirm_background_button2"/>
+            android:background="@drawable/dialog_confirm_background_button"/>
 
     </RelativeLayout>
 
@@ -184,6 +184,6 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:background="@drawable/player_layout_help_call_title_background3"
+        android:background="@drawable/player_layout_help_call_title_background"
         android:layout_marginTop="-323dp"/>
 </LinearLayout>
