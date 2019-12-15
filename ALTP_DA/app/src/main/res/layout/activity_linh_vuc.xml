@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#98BDDA"
     android:orientation="vertical">
 
@@ -106,10 +107,10 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                app:srcCompat="@mipmap/logo_altp_foreground"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp" />
+                android:layout_marginBottom="4dp"
+                app:srcCompat="@mipmap/logo_altp_foreground"/>
 
             <TextView
                 android:id="@+id/textView"
