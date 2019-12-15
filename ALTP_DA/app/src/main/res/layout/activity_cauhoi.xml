@@ -28,7 +28,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/ic_no_image"
                     android:layout_centerVertical="true"
-                    android:id="@+id/ic_play"
+                    android:id="@+id/imvAvatar"
                     />
                 <TextView
                     android:layout_width="wrap_content"
@@ -36,10 +36,10 @@
                     android:text="Người chơi"
                     android:textSize="16dp"
                     android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/ic_play"
+                    android:layout_toRightOf="@+id/imvAvatar"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
-                    android:id="@+id/name_play"
+                    android:id="@+id/txtName"
                     />
             </RelativeLayout>
             <RelativeLayout
@@ -49,24 +49,25 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 >
+
                 <ProgressBar
+                    android:id="@+id/timeProgressBar"
+                    style="@style/RtlOverlay.Widget.AppCompat.DialogTitle.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
-                    android:id="@+id/play_layout_progressBar"
-                    style="@style/RtlOverlay.Widget.AppCompat.DialogTitle.Icon"
-                    />
+                    android:indeterminate="false"
+                    android:max="30"/>
+
                 <TextView
+                    android:id="@+id/txtTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:text="30"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
                     android:textColor="@android:color/white"
-                    android:id="@+id/play_layout_txt_time"
-                    />
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="0dp"
@@ -151,7 +152,7 @@
 
 
             <TextView
-                android:id="@+id/play_layout_contentQuestion"
+                android:id="@+id/txtCauHoi"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:background="@drawable/text5"
@@ -161,9 +162,10 @@
                 android:textSize="18sp"
                 android:text="Nội dung câu hỏi"
                 android:textStyle="bold" />
+
             <TextView
                 android:text="Câu:"
-                android:id="@+id/play_layout_titleQuestion"
+                android:id="@+id/txtSoCau"
                 android:layout_width="200dp"
                 android:layout_height="35dp"
                 android:layout_gravity="center|top"
@@ -186,56 +188,60 @@
             android:weightSum="4">
 
             <TextView
-                android:id="@+id/play_layout_a"
+                android:id="@+id/A"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/level_click_bg"
                 android:gravity="center_vertical"
-                android:paddingLeft="40dp"
+                android:onClick="XuLiChonDapAn"
+                android:paddingLeft="20dp"
                 android:text="A:"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/play_layout_b"
+                android:id="@+id/B"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/level_click_bg"
                 android:gravity="center_vertical"
-                android:paddingLeft="40dp"
+                android:onClick="XuLiChonDapAn"
+                android:paddingLeft="20dp"
                 android:text="B:"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/play_layout_c"
+                android:id="@+id/C"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/level_click_bg"
                 android:gravity="center_vertical"
-                android:paddingLeft="40dp"
+                android:onClick="XuLiChonDapAn"
+                android:paddingLeft="20dp"
                 android:text="C:"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/play_layout_d"
+                android:id="@+id/D"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/level_click_bg"
                 android:gravity="center_vertical"
-                android:paddingLeft="40dp"
+                android:onClick="XuLiChonDapAn"
+                android:paddingLeft="20dp"
                 android:text="D:"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
