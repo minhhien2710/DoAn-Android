@@ -8,6 +8,9 @@ import android.widget.Button;
 import java.util.concurrent.ExecutionException;
 
 public class MenuActivity extends AppCompatActivity {
+
+    MusicManager musicManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,5 +20,8 @@ public class MenuActivity extends AppCompatActivity {
     public void btnNewGame(View v) throws ExecutionException, InterruptedException {
         Button btn = (Button) v;
         String lst = new GetAPICauHoi(this).execute(v.getId() == R.id.btnNewGame ? "1" : "2").get();
+
+        musicManager = new MusicManager();
+        musicManager.setNhacBatDauGame(MenuActivity.this);
     }
 }

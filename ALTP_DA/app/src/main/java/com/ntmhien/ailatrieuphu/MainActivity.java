@@ -2,7 +2,6 @@ package com.ntmhien.ailatrieuphu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonDangNhap;
+    MusicManager musicManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        nhacNen(MainActivity.this);
-    }
-    private void nhacNen(Activity a) {
-        Music.getMusicPlayer().playNhacNen(a);
+        musicManager = new MusicManager();
+        musicManager.setNhacNen(MainActivity.this);
     }
 }

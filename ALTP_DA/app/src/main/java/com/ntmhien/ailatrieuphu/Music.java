@@ -1,24 +1,27 @@
 package com.ntmhien.ailatrieuphu;
 
-import android.app.Application;
-import android.content.Context;
+public class Music{
+    private String Title;
+    private int File;
 
-public class Music extends Application {
-    private static Context context;
-    private static MusicManager musicPlayer;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        context = this;
-        musicPlayer = new MusicManager(this);
+    public Music(String title, int file) {
+        Title = title;
+        File = file;
     }
 
-    public static MusicManager getMusicPlayer(){
-        return musicPlayer;
+    public String getTitle() {
+        return Title;
     }
 
-    public static Context getContext() {
-        return context;
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public int getFile() {
+        return File;
+    }
+
+    public void setFile(int file) {
+        File = file;
     }
 }

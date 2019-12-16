@@ -13,7 +13,7 @@ public class APICauHoi {
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://192.168.100.16:8080/api/api.php?DoKho="+Level);
+            URL requestURL = new URL("http://192.168.1.4:6969/api/api.php?DoKho="+Level);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

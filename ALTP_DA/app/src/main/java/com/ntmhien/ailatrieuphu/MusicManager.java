@@ -1,28 +1,32 @@
 package com.ntmhien.ailatrieuphu;
 
 import android.app.Activity;
-import android.content.Context;
 import android.media.MediaPlayer;
 
-public class MusicManager implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener {
+import java.util.ArrayList;
 
-    private MediaPlayer mediaPlayer;
-    private Context c;
+public class MusicManager{
+    ArrayList<Music> musicArrayList;
+    MediaPlayer mediaPlayer;
 
-    public MusicManager(Context contex) {
-        this.c = contex;
+    public void addMusic(){
+        musicArrayList = new ArrayList<>();
+
+        musicArrayList.add(new Music("0-NhacNen",R.raw.bgmusic));
+        musicArrayList.add(new Music("1-NhacStartGame",R.raw.gofind));
     }
 
-    public void playNhacNen(Activity a){
-        mediaPlayer = MediaPlayer.create(a,R.raw.bgmusic);
+    public void setNhacNen(Activity activity){
+        addMusic();
+
+        mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(0).getFile());
         mediaPlayer.start();
     }
 
-    @Override
-    public void onPrepared(MediaPlayer mp) {
-    }
+    public void setNhacBatDauGame(Activity activity){
+        addMusic();
 
-    @Override
-    public void onCompletion(MediaPlayer mp) {
+        mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(1).getFile());
+        mediaPlayer.start();
     }
 }
