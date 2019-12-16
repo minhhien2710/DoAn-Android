@@ -1,11 +1,14 @@
 package com.ntmhien.ailatrieuphu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -16,22 +19,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
-public class HienThiCauHoi extends AppCompatActivity {
+public class HienThiCauHoi extends AppCompatActivity implements View.OnClickListener {
     private ProgressBar progressBar;
-    LoadTime loadTime;
-    ArrayList<CauHoi> lst_cauhoi;
-    int point = 0;
-    int cur = 0;
-    TextView m_txt_num;
-    TextView m_txt_content;
-    TextView m_DA1;
-    TextView m_DA2;
-    TextView m_DA3;
-    TextView m_DA4;
+    private LoadTime loadTime;
+    private ArrayList<CauHoi> lst_cauhoi;
+    private int point = 0;
+    private TextView m_txt_num;
+    private TextView m_txt_content;
+    private TextView m_DA1,m_DA2,m_DA3,m_DA4;
 
-    TextView textView;
+    private boolean bReady;
+    private boolean bPlaying;
+
+    private Random random;
+    private Handler handler;
 
     int pos = 0;
 
@@ -40,27 +44,15 @@ public class HienThiCauHoi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cauhoi);
-        m_txt_num = (TextView) findViewById(R.id.txtSoCau);
-        m_txt_content = (TextView) findViewById(R.id.txtCauHoi);
-        m_DA1 = findViewById(R.id.A);
-        m_DA2 = findViewById(R.id.B);
-        m_DA3 = findViewById(R.id.C);
-        m_DA4 = findViewById(R.id.D);
-        progressBar = findViewById(R.id.timeProgressBar);
 
-        //Load thời gian
-        if(loadTime==null)
-        {
-            loadTime=new LoadTime(this);
-            loadTime.execute();
-        }
-        else if(loadTime.getStatus()==LoadTime.Status.FINISHED)
-        {
-            loadTime=new LoadTime(this);
-            loadTime.execute();
-        }
+        setLoadTime();
+        findViewByIds();
+        setEvents();
+        setCauHoi();
+    }
 
-
+    private void setCauHoi()
+    {
         Intent intent = getIntent();
         String jSonString = intent.getStringExtra("message");
         if (get_lst_cauhoi(jSonString) == true) {
@@ -79,7 +71,29 @@ public class HienThiCauHoi extends AppCompatActivity {
             m_DA4.setVisibility(View.INVISIBLE);
         }
     }
+    private void setLoadTime()
+    {
+        if(loadTime==null)
+        {
+            loadTime=new LoadTime(this);
+            loadTime.execute();
+        }
+        else if(loadTime.getStatus()==LoadTime.Status.FINISHED)
+        {
+            loadTime=new LoadTime(this);
+            loadTime.execute();
+        }
+    }
 
+    private void findViewByIds() {
+        m_txt_num = (TextView) findViewById(R.id.txtSoCau);
+        m_txt_content = (TextView) findViewById(R.id.txtCauHoi);
+        m_DA1 = findViewById(R.id.A);
+        m_DA2 = findViewById(R.id.B);
+        m_DA3 = findViewById(R.id.C);
+        m_DA4 = findViewById(R.id.D);
+        progressBar = findViewById(R.id.timeProgressBar);
+    }
 
     public void ShowQuestion(int pos) {
         int dem = pos + 1;
@@ -115,7 +129,15 @@ public class HienThiCauHoi extends AppCompatActivity {
         }
     }
 
-    public void XuLiChonDapAn(final View v) {
+    private void setEvents() {
+        m_DA1.setOnClickListener(this);
+        m_DA2.setOnClickListener(this);
+        m_DA3.setOnClickListener(this);
+        m_DA4.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(final View v) {
         //Dialog verify
         AlertDialog.Builder b=new AlertDialog.Builder(this);
         b.setTitle("Bạn có chắc chọn đáp án "+v.getId()+" không?");

@@ -48,6 +48,7 @@ public class LoadTime extends AsyncTask<Integer,Integer,Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
         Toast.makeText(contextParent, "Hết thời gian !", Toast.LENGTH_SHORT).show();
+        progressBar.setVisibility(ProgressBar.GONE);
 
         AlertDialog.Builder b=new AlertDialog.Builder(contextParent);
         b.setTitle("Ôi không! Bạn đã hết thời gian trả lời");
