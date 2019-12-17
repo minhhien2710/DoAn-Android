@@ -1,173 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#98BDDA"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <LinearLayout
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#98BDDA"
         android:orientation="vertical">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:id="@+id/play_layout_actionbar"
-            android:background="@drawable/atp__dialog_confirm_background"
-            android:weightSum="3"
-            >
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_no_image"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/ic_play"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Người chơi"
-                    android:textSize="16dp"
-                    android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/ic_play"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:id="@+id/name_play"
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_weight="1"
-
-                android:id="@+id/rl_time"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                >
-                <ProgressBar
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/play_layout_progressBar"
-                    style="@style/RtlOverlay.Widget.AppCompat.DialogTitle.Icon"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="30"
-                    android:textStyle="bold"
-                    android:textSize="24dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:textColor="@android:color/white"
-                    android:id="@+id/play_layout_txt_time"
-                    />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/atp__activity_profile_icon_money"
-                    android:layout_toLeftOf="@+id/play_layout_txt_money"
-                    />
-                <TextView
-                    android:text="Credit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:textSize="15dp"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/play_layout_txt_money"
-                    />
-            </RelativeLayout>
-        </TableRow>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="40dp"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-
-            <ImageView
-                android:id="@+id/imgLogo"
+            <TableRow
+                android:id="@+id/play_layout_actionbar"
                 android:layout_width="match_parent"
-                android:layout_height="278dp"
-                app:srcCompat="@mipmap/logo_altp_foreground" />
+                android:layout_height="45dp"
+                android:background="@drawable/atp__dialog_confirm_background"
+                android:weightSum="3">
 
-            <TextView
-                android:id="@+id/textView"
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/ic_play"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_no_image" />
+
+                    <TextView
+                        android:id="@+id/name_play"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/ic_play"
+                        android:text="Người chơi"
+                        android:textColor="@android:color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_time"
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ProgressBar
+                        android:id="@+id/play_layout_progressBar"
+                        style="@style/RtlOverlay.Widget.AppCompat.DialogTitle.Icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerHorizontal="true" />
+
+                    <TextView
+                        android:id="@+id/play_layout_txt_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="30"
+                        android:textColor="@android:color/white"
+                        android:textSize="24dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/play_layout_txt_money"
+                        android:src="@drawable/atp__activity_profile_icon_money" />
+
+                    <TextView
+                        android:id="@+id/play_layout_txt_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="Credit"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </TableRow>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="Chọn lĩnh vực"
-                android:textAlignment="center"
-                android:textSize="30sp" />
+                android:layout_margin="40dp"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/btn_radius_red"
-                android:text="Khoa học kĩ thuật"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/btn_radius_blue"
-                android:text="Văn hóa-xã hội-nghệ thuật"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="278dp"
+                    app:srcCompat="@mipmap/logo_altp_foreground" />
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/btn_radius_green"
-                android:text="Lịch sử địa lý"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Chọn lĩnh vực"
+                    android:textAlignment="center"
+                    android:textSize="30sp" />
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:background="@drawable/btn_radius_yell"
-                android:text="Thể thao"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/btn_radius_red"
+                    android:text="Khoa học kĩ thuật"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF" />
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_radius_pur"
-                android:text="Ngẫu nhiên"
-                android:textAllCaps="false"
-                android:textColor="#FFFFFF" />
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/btn_radius_blue"
+                    android:text="Văn hóa-xã hội-nghệ thuật"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/btn_radius_green"
+                    android:text="Lịch sử địa lý"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:background="@drawable/btn_radius_yell"
+                    android:text="Thể thao"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_radius_pur"
+                    android:text="Ngẫu nhiên"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
 
         </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_gravity="left"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#424242"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/iv_music"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_centerVertical="true"
+                android:paddingRight="16dp"
+                android:src="@drawable/icon_music" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_music"
+                android:text="Nhạc nền"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ToggleButton
+                android:id="@+id/tog_music"
+                android:layout_width="102dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/toggle_button_on"
+                android:textOff=""
+                android:textOn="" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/iv_sound"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_centerVertical="true"
+                android:paddingRight="16dp"
+                android:src="@drawable/icon_sound" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_sound"
+                android:text="Âm thanh"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ToggleButton
+                android:id="@+id/tog_sound"
+                android:layout_width="102dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/toggle_button_on"
+                android:textOff=""
+                android:textOn="" />
+        </RelativeLayout>
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

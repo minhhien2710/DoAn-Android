@@ -54,12 +54,13 @@
         </RelativeLayout>
 
         <Button
-            android:layout_marginTop="5dp"
             android:id="@+id/btnProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="4dp"
             android:background="@drawable/btn_radius_red"
+            android:onClick="onClick"
             android:text="Quản lý tài khoản"
             android:textAllCaps="false"
             android:textColor="#FFFFFF" />
@@ -76,32 +77,35 @@
             android:textColor="#FFFFFF" />
 
         <Button
-            android:background="@drawable/btn_radius_green"
             android:id="@+id/btnHistory"
-            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/btn_radius_green"
+            android:onClick="onClick"
             android:text="Lịch sử chơi"
-            android:layout_marginBottom="4dp"
-            android:textColor="#FFFFFF"/>
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
 
         <Button
-            android:background="@drawable/btn_radius_yell"
             android:id="@+id/btnBXH"
-            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bảng xếp hạng"
             android:layout_marginBottom="4dp"
-            android:textColor="#FFFFFF"/>
+            android:background="@drawable/btn_radius_yell"
+            android:onClick="onClick"
+            android:text="Bảng xếp hạng"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
 
         <Button
-            android:background="@drawable/btn_radius_pur"
             android:id="@+id/btnBuyCredit"
-            android:textAllCaps="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/btn_radius_pur"
+            android:onClick="onClick"
             android:text="Mua Credit"
+            android:textAllCaps="false"
             android:textColor="#FFFFFF" />
 
     </LinearLayout>
