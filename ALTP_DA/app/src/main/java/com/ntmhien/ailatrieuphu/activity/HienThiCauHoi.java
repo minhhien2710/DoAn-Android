@@ -23,6 +23,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 
@@ -33,10 +34,11 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private int point = 0;
     private TextView m_txt_num;
     private TextView m_txt_content;
-    private TextView m_DA1,m_DA2,m_DA3,m_DA4;
+    private TextView m_DA1, m_DA2, m_DA3, m_DA4;
 
     private DrawerLayout dl;
     private ImageView Prof;
+    ArrayList<Integer> number = new ArrayList<Integer>();
 
     int[] rdQuestion;
     int pos = 0;
@@ -53,17 +55,16 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         setCauHoi();
     }
 
-    private void setCauHoi()
-    {
+    private void setCauHoi() {
         Intent intent = getIntent();
         String jSonString = intent.getStringExtra("message");
         if (get_lst_cauhoi(jSonString) == true) {
             m_txt_num.setText("Câu: 1");
-            m_txt_content.setText(lst_cauhoi.get(rdQuestion[pos]).NoiDung);
-            m_DA1.setText("A. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn1);
-            m_DA2.setText("B. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn2);
-            m_DA3.setText("C. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn3);
-            m_DA4.setText("D. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn4);
+            m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
+            m_DA1.setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
+            m_DA2.setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
+            m_DA3.setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
+            m_DA4.setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
         } else {
             m_txt_content.setText("API không hoạt động.");
             m_txt_num.setVisibility(View.INVISIBLE);
@@ -74,16 +75,12 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void setLoadTime()
-    {
-        if(loadTime==null)
-        {
-            loadTime=new LoadTime(this);
+    private void setLoadTime() {
+        if (loadTime == null) {
+            loadTime = new LoadTime(this);
             loadTime.execute();
-        }
-        else if(loadTime.getStatus()==LoadTime.Status.FINISHED)
-        {
-            loadTime=new LoadTime(this);
+        } else if (loadTime.getStatus() == LoadTime.Status.FINISHED) {
+            loadTime = new LoadTime(this);
             loadTime.execute();
         }
     }
@@ -104,11 +101,11 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     public void ShowQuestion(int pos) {
         int sttcau = pos + 1;
         m_txt_num.setText("Câu: " + sttcau);
-        m_txt_content.setText(lst_cauhoi.get(rdQuestion[pos]).NoiDung);
-        m_DA1.setText("A. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn1);
-        m_DA2.setText("B. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn2);
-        m_DA3.setText("C. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn3);
-        m_DA4.setText("D. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn4);
+        m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
+        m_DA1.setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
+        m_DA2.setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
+        m_DA3.setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
+        m_DA4.setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
     }
 
     private Boolean get_lst_cauhoi(String jSonString) {
@@ -128,9 +125,8 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 quiz.Chon = "0";
                 lst_cauhoi.add(quiz);
             }
-
             //Random câu hỏi
-            Random rd = new Random();
+            /*Random rd = new Random();
             rdQuestion = new int[num];
             int tmp;
             int i=0;
@@ -147,14 +143,11 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                             break;
                         }
                     }
-                }
+                }*/
+            //Random câu hỏi
+            for (int i = 1; i <= num + 1; ++i) number.add(i);
+            Collections.shuffle(number);
 
-                if( !flag ) {
-                    rdQuestion[i] = tmp;
-                    i++;
-                }
-            }
-            //----//
             return true;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -170,40 +163,42 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
         Prof.setOnClickListener(this);
     }
-public void Prof(View view){
-    dl.openDrawer(Gravity.LEFT);
-}
+
+    public void Prof(View view) {
+        dl.openDrawer(Gravity.LEFT);
+    }
+
     @Override
     public void onClick(final View v) {
         //Dialog verify
-        AlertDialog.Builder b=new AlertDialog.Builder(this);
-        b.setTitle("Bạn có chắc chọn đáp án "+v.getId()+" không?");
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Bạn có chắc chọn đáp án " + v.getId() + " không?");
         b.setMessage("Suy nghĩ thật kĩ nhé!");
-        b.setPositiveButton("Không chọn", new DialogInterface. OnClickListener() {
+        b.setPositiveButton("Không chọn", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
+            public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(HienThiCauHoi.this, "Thời gian vẫn đang chạy đấy nhé!", Toast.LENGTH_SHORT).show();
-            }});
+            }
+        });
         b.setNegativeButton("Vẫn chọn", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
+            public void onClick(DialogInterface dialog, int which) {
                 //Xử lý đúng sai
-                if(String.valueOf(v.getId())==lst_cauhoi.get(pos).DapAn){
-                    point=point+1;
+                if (String.valueOf(v.getId()) == lst_cauhoi.get(number.get(pos)).DapAn) {
+                    point = point + 1;
                 }
 
                 //Load lại time
                 loadTime.cancel(true);
-                loadTime=new LoadTime(HienThiCauHoi.this);
+                loadTime = new LoadTime(HienThiCauHoi.this);
                 loadTime.execute();
 
                 //Chuyển câu hỏi
                 pos++;
                 if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
                 ShowQuestion(pos);
-            }});
+            }
+        });
         b.create().show();
     }
 }
