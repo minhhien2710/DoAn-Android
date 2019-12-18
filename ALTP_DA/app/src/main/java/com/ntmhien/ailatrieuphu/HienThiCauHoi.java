@@ -1,14 +1,11 @@
 package com.ntmhien.ailatrieuphu;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -31,12 +28,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private TextView m_txt_content;
     private TextView m_DA1,m_DA2,m_DA3,m_DA4;
 
-    private boolean bReady;
-    private boolean bPlaying;
-
-    private Random random;
-    private Handler handler;
-
+    int[] rdQuestion;
     int pos = 0;
 
 
@@ -57,11 +49,11 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         String jSonString = intent.getStringExtra("message");
         if (get_lst_cauhoi(jSonString) == true) {
             m_txt_num.setText("Câu: 1");
-            m_txt_content.setText(lst_cauhoi.get(0).NoiDung);
-            m_DA1.setText("A. " + lst_cauhoi.get(0).PhuongAn1);
-            m_DA2.setText("B. " + lst_cauhoi.get(0).PhuongAn2);
-            m_DA3.setText("C. " + lst_cauhoi.get(0).PhuongAn3);
-            m_DA4.setText("D. " + lst_cauhoi.get(0).PhuongAn4);
+            m_txt_content.setText(lst_cauhoi.get(rdQuestion[pos]).NoiDung);
+            m_DA1.setText("A. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn1);
+            m_DA2.setText("B. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn2);
+            m_DA3.setText("C. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn3);
+            m_DA4.setText("D. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn4);
         } else {
             m_txt_content.setText("API không hoạt động.");
             m_txt_num.setVisibility(View.INVISIBLE);
@@ -71,6 +63,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             m_DA4.setVisibility(View.INVISIBLE);
         }
     }
+
     private void setLoadTime()
     {
         if(loadTime==null)
@@ -96,13 +89,13 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     }
 
     public void ShowQuestion(int pos) {
-        int dem = pos + 1;
-        m_txt_num.setText("Câu: " + dem);
-        m_txt_content.setText(lst_cauhoi.get(pos).NoiDung);
-        m_DA1.setText("A. " + lst_cauhoi.get(pos).PhuongAn1);
-        m_DA2.setText("B. " + lst_cauhoi.get(pos).PhuongAn2);
-        m_DA3.setText("C. " + lst_cauhoi.get(pos).PhuongAn3);
-        m_DA4.setText("D. " + lst_cauhoi.get(pos).PhuongAn4);
+        int sttcau = pos + 1;
+        m_txt_num.setText("Câu: " + sttcau);
+        m_txt_content.setText(lst_cauhoi.get(rdQuestion[pos]).NoiDung);
+        m_DA1.setText("A. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn1);
+        m_DA2.setText("B. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn2);
+        m_DA3.setText("C. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn3);
+        m_DA4.setText("D. " + lst_cauhoi.get(rdQuestion[pos]).PhuongAn4);
     }
 
     private Boolean get_lst_cauhoi(String jSonString) {
@@ -122,6 +115,33 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 quiz.Chon = "0";
                 lst_cauhoi.add(quiz);
             }
+
+            //Random câu hỏi
+            Random rd = new Random();
+            rdQuestion = new int[num];
+            int tmp;
+            int i=0;
+            boolean flag;
+
+            while (i<num){
+                tmp = rd.nextInt(num);
+                flag=false;
+
+                if (i>0) {
+                    for (int y = 0; y <= i; y++) {
+                        if (tmp == rdQuestion[y]) {
+                            flag=true;
+                            break;
+                        }
+                    }
+                }
+
+                if( !flag ) {
+                    rdQuestion[i] = tmp;
+                    i++;
+                }
+            }
+            //----//
             return true;
         } catch (JSONException e) {
             e.printStackTrace();
