@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 
@@ -38,7 +39,8 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
     private DrawerLayout dl;
     private ImageView Prof;
-    ArrayList<Integer> number = new ArrayList<Integer>();
+    ArrayList<Integer> a = new ArrayList<Integer>();
+    List<Integer> number = new ArrayList<Integer>();
 
     int[] rdQuestion;
     int pos = 0;
@@ -145,9 +147,23 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                     }
                 }*/
             //Random câu hỏi
-            for (int i = 1; i <= num + 1; ++i) number.add(i);
-            Collections.shuffle(number);
+            /*for (int i = 1; i <= num; ++i) number.add(i);
+            Collections.shuffle(number);*/
+            Random rng = new Random(); // Ideally just create one instance globally
 
+            for (int i = 0; i < num; i++)
+            {
+                while(true)
+                {
+                    Integer next = rng.nextInt(num);
+                    if (!number.contains(next))
+                    {
+                        // Done for this iteration
+                        number.add(next);
+                        break;
+                    }
+                }
+            }
             return true;
         } catch (JSONException e) {
             e.printStackTrace();
