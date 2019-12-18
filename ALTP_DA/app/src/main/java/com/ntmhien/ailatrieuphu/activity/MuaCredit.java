@@ -1,14 +1,16 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class DangKi extends AppCompatActivity {
+import com.ntmhien.ailatrieuphu.R;
+
+public class MuaCredit extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dang_ki);
+        setContentView(R.layout.activity_mua_credit);
     }
 }

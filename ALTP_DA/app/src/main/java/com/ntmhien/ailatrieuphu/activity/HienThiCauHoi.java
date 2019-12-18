@@ -1,15 +1,22 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ntmhien.ailatrieuphu.model.CauHoi;
+import com.ntmhien.ailatrieuphu.fragments.LoadTime;
+import com.ntmhien.ailatrieuphu.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +34,9 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private TextView m_txt_num;
     private TextView m_txt_content;
     private TextView m_DA1,m_DA2,m_DA3,m_DA4;
+
+    private DrawerLayout dl;
+    private ImageView Prof;
 
     int[] rdQuestion;
     int pos = 0;
@@ -86,6 +96,9 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         m_DA3 = findViewById(R.id.C);
         m_DA4 = findViewById(R.id.D);
         progressBar = findViewById(R.id.timeProgressBar);
+
+        dl = findViewById(R.id.dlcauhoi);
+        Prof = findViewById(R.id.imgAvatar);
     }
 
     public void ShowQuestion(int pos) {
@@ -154,8 +167,12 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         m_DA2.setOnClickListener(this);
         m_DA3.setOnClickListener(this);
         m_DA4.setOnClickListener(this);
-    }
 
+        Prof.setOnClickListener(this);
+    }
+public void Prof(View view){
+    dl.openDrawer(Gravity.LEFT);
+}
     @Override
     public void onClick(final View v) {
         //Dialog verify

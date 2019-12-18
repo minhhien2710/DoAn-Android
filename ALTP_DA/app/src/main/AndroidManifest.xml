@@ -12,16 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MuaCredit"></activity>
-        <activity android:name=".BXH" />
-        <activity android:name=".LichSuChoi" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".QL_TaiKhoan" />
-        <activity android:name=".LinhVuc" />
-        <activity android:name=".QuenMatKhau" />
-        <activity android:name=".DangKi" />
-        <activity android:name=".HienThiCauHoi" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".dialogs.GoiChoNguoiThan"></activity>
+        <activity android:name=".dialogs.TroGiupKhangGia" />
+        <activity android:name=".activity.MuaCredit" />
+        <activity android:name=".activity.BXH" />
+        <activity android:name=".activity.LichSuChoi" />
+        <activity android:name=".activity.MenuActivity" />
+        <activity android:name=".activity.QL_TaiKhoan" />
+        <activity android:name=".activity.LinhVuc" />
+        <activity android:name=".activity.QuenMatKhau" />
+        <activity android:name=".activity.DangKi" />
+        <activity android:name=".activity.HienThiCauHoi" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ntmhien.ailatrieuphu.R;
 
 public class LoadTime extends AsyncTask<Integer,Integer,Void> {
 

@@ -1,14 +1,16 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MuaCredit extends AppCompatActivity {
+import com.ntmhien.ailatrieuphu.R;
+
+public class QL_TaiKhoan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mua_credit);
+        setContentView(R.layout.activity_ql__tai_khoan);
     }
 }

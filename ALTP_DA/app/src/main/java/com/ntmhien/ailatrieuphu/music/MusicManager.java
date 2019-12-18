@@ -1,7 +1,9 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.music;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
+
+import com.ntmhien.ailatrieuphu.R;
 
 import java.util.ArrayList;
 
@@ -12,7 +14,7 @@ public class MusicManager{
     public void addMusic(){
         musicArrayList = new ArrayList<>();
 
-        musicArrayList.add(new Music("0-NhacNen",R.raw.bgmusic));
+        musicArrayList.add(new Music("0-NhacNen", R.raw.bgmusic));
         musicArrayList.add(new Music("1-NhacStartGame",R.raw.gofind));
         musicArrayList.add(new Music("2-NhacCauHoiDauTien",R.raw.ques1_b));
         musicArrayList.add(new Music("3-NhacCauHoiTiepTheo",R.raw.question_all));

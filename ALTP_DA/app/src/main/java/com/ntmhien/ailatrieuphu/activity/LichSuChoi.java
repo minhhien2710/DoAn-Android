@@ -1,14 +1,16 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class QuenMatKhau extends AppCompatActivity {
+import com.ntmhien.ailatrieuphu.R;
+
+public class LichSuChoi extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quen_mat_khau);
+        setContentView(R.layout.activity_lich_su_choi);
     }
 }

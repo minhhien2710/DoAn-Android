@@ -1,4 +1,4 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.model;
 
 public class CauHoi {
     public String NoiDung;

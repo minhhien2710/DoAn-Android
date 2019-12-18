@@ -1,9 +1,12 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.api;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+
+import com.ntmhien.ailatrieuphu.activity.HienThiCauHoi;
+import com.ntmhien.ailatrieuphu.api.APICauHoi;
 
 public class GetAPICauHoi extends AsyncTask<String, String, String> {
     private Context m_con;

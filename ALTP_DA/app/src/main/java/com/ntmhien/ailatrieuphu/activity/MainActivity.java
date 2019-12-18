@@ -1,4 +1,4 @@
-package com.ntmhien.ailatrieuphu;
+package com.ntmhien.ailatrieuphu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.ntmhien.ailatrieuphu.music.MusicManager;
+import com.ntmhien.ailatrieuphu.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         musicManager = new MusicManager();
         musicManager.setNhacNen(MainActivity.this);
     }
