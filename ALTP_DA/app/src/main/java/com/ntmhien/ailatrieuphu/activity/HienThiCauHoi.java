@@ -170,9 +170,9 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
         Prof.setOnClickListener(this);
     }
-public void Prof(View view){
-    dl.openDrawer(Gravity.LEFT);
-}
+    public void Prof(View view){
+        dl.openDrawer(Gravity.LEFT);
+    }
     @Override
     public void onClick(final View v) {
         //Dialog verify
