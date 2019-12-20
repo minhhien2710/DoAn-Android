@@ -1,9 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".dialogs.GoiChoNguoiThan">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/rl_calls"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/player_layout_help_call_audience_background3"
+        android:gravity="center"
+        android:padding="48dp">
+
+        <LinearLayout
+            android:id="@+id/ln_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="16dp"
+                android:paddingBottom="32dp"
+                android:text="Theo tôi đáp án đúng là A"
+                android:textColor="#ffbe1c"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_close"
+                android:layout_width="102dp"
+                android:layout_height="28dp"
+                android:background="@drawable/dialog_confirm_background_button"
+                android:text="Đóng"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="172dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="-322dp"
+        android:background="@drawable/player_layout_help_call_title_background"
+        android:gravity="center"
+        android:text="Ý kiến chuyên gia"
+        android:textColor="#000000"
+        android:textStyle="bold" />
+
+</LinearLayout>

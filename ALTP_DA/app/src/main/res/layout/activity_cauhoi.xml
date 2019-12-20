@@ -4,49 +4,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#98BDDA">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:onClick="Prof"
         android:orientation="vertical">
 
         <TableRow
+            android:id="@+id/play_layout_actionbar"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:id="@+id/play_layout_actionbar"
             android:background="@drawable/atp__dialog_confirm_background2"
-            android:weightSum="3"
-            >
+            android:weightSum="3">
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
+
                 <ImageView
+                    android:id="@+id/imgAvatar"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/ic_no_image"
                     android:layout_centerVertical="true"
-                    android:id="@+id/imgAvatar"
-                    />
+                    android:src="@drawable/ic_no_image" />
+
                 <TextView
+                    android:id="@+id/txtName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Người chơi"
-                    android:textSize="16dp"
-                    android:textColor="@android:color/white"
-                    android:layout_toRightOf="@+id/imgAvatar"
                     android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:id="@+id/txtName"
-                    />
+                    android:layout_toRightOf="@+id/imgAvatar"
+                    android:text="Người chơi"
+                    android:textColor="@android:color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
             </RelativeLayout>
-            <RelativeLayout
-                android:layout_weight="1"
 
+            <RelativeLayout
                 android:id="@+id/rl_time"
+
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                >
+                android:layout_weight="1">
 
                 <ProgressBar
                     android:id="@+id/timeProgressBar"
@@ -65,80 +66,90 @@
                     android:textSize="24dp"
                     android:textStyle="bold" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                >
+                android:layout_weight="1">
+
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/atp__activity_profile_icon_money"
                     android:layout_toLeftOf="@+id/play_layout_txt_money"
-                    />
+                    android:src="@drawable/atp__activity_profile_icon_money" />
+
                 <TextView
-                    android:text="Credit"
+                    android:id="@+id/play_layout_txt_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:textSize="15dp"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold"
                     android:layout_centerVertical="true"
-                    android:id="@+id/play_layout_txt_money"
-                    />
+                    android:text="Credit"
+                    android:textColor="@android:color/white"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
             </RelativeLayout>
         </TableRow>
+
         <TableRow
+            android:id="@+id/play_layout_table1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="5"
-            android:id="@+id/play_layout_table1"
             android:layout_below="@+id/play_layout_actionbar"
-            >
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/level_dung"
-                android:id="@+id/play_layout_btnStop"
-                android:layout_margin="10dp"
-                />
+            android:weightSum="5">
 
             <ImageView
+                android:id="@+id/play_layout_btnStop"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/level_chuyencau"
+                android:background="@drawable/level_dung" />
+
+            <ImageView
                 android:id="@+id/play_layout_btnchuyencau"
-                android:layout_margin="10dp"
-                />
-            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/drawlevel_5050"
+                android:background="@drawable/level_chuyencau" />
+
+            <ImageView
                 android:id="@+id/play_layout_btn50_50"
-                android:layout_margin="10dp"
-                />
-            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/atp__activity_player_button_image_help_audience"
+                android:background="@drawable/drawlevel_5050" />
+
+            <ImageView
                 android:id="@+id/play_layout_Audience"
-                android:layout_margin="10dp"
-                />
-            <ImageView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/level_call"
-                android:id="@+id/play_layout_btnCall"
                 android:layout_margin="10dp"
-                />
+                android:layout_weight="1"
+                android:background="@drawable/atp__activity_player_button_image_help_audience" />
+
+            <ImageView
+                android:id="@+id/play_layout_btnCall"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/level_call" />
         </TableRow>
+
+        <TextView
+            android:id="@+id/txtSoCau1"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|top"
+            android:background="@drawable/bg_point3"
+            android:gravity="center"
+            android:text="Điểm ✡:"
+            android:textColor="#FFEB3B"
+            android:textSize="20sp" />
 
         <FrameLayout
             android:id="@+id/play_layout_frameLayout"
@@ -146,21 +157,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/play_layout_table1">
 
-
             <TextView
                 android:id="@+id/txtCauHoi"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="240dp"
                 android:background="@drawable/text5"
                 android:gravity="center"
                 android:padding="40dp"
+                android:text="Nội dung câu hỏi"
                 android:textColor="@android:color/holo_orange_light"
                 android:textSize="18sp"
-                android:text="Nội dung câu hỏi"
                 android:textStyle="bold" />
 
             <TextView
-                android:text="Câu:"
                 android:id="@+id/txtSoCau"
                 android:layout_width="200dp"
                 android:layout_height="35dp"
@@ -168,6 +177,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/atp__activity_player_layout_play_order_question2"
                 android:gravity="center"
+                android:text="Câu:"
                 android:textColor="@android:color/black"
                 android:textSize="24sp" />
         </FrameLayout>
@@ -178,7 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="vertical"
             android:weightSum="4">
@@ -187,7 +197,7 @@
                 android:id="@+id/A"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="10dp"
+
                 android:layout_weight="1"
                 android:background="@drawable/level_click_bg"
                 android:gravity="center_vertical"
@@ -241,9 +251,11 @@
 
         </LinearLayout>
     </LinearLayout>
-    <include layout="@layout/activity_setting"
+
+    <include
+        layout="@layout/activity_setting"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
