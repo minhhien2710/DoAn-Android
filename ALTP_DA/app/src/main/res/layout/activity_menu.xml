@@ -39,7 +39,7 @@
                 android:layout_height="25dp"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/play_layout_txt_money"
-                android:src="@drawable/atp__activity_profile_icon_money" />
+                android:src="@drawable/profile_icon_money" />
 
             <TextView
                 android:id="@+id/play_layout_txt_money"

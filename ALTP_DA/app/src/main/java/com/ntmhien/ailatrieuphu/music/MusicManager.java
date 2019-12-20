@@ -17,7 +17,7 @@ public class MusicManager{
 
         musicArrayList.add(new Music("0-Nhạc Nền", R.raw.bgmusic,0));
         musicArrayList.add(new Music("1-Nhạc StartGame",R.raw.gofind,0));
-        musicArrayList.add(new Music("2-Nhạc STT Câu Hỏi",R.raw.ques1_b,R.raw.question_all));
+        musicArrayList.add(new Music("2-Nhạc STT Câu Hỏi",R.raw.ques1_b,R.raw.question_next));
         //Music Chọn Đáp Án
         musicArrayList.add(new Music("3-Chọn Câu A ",R.raw.ans_a,R.raw.ans_a2));
         musicArrayList.add(new Music("4-Chọn Câu B",R.raw.ans_b,R.raw.ans_b2));

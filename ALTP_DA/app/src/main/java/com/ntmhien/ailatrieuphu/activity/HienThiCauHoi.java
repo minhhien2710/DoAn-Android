@@ -176,10 +176,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         Prof.setOnClickListener(this);
     }
 
-    public void Prof(View view){
-        dl.openDrawer(Gravity.LEFT);
-    }
-
     private void xuLyDungSai(final View v, final String DapAn){
         setClickAble(false);
 

@@ -3,7 +3,7 @@
     android:id="@+id/dlcauhoi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#98BDDA">
+    android:background="#2D5F83">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:id="@+id/play_layout_actionbar"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@drawable/atp__dialog_confirm_background2"
+            android:background="@drawable/confirm_background"
             android:weightSum="3">
 
             <RelativeLayout
@@ -77,7 +77,7 @@
                     android:layout_height="25dp"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/play_layout_txt_money"
-                    android:src="@drawable/atp__activity_profile_icon_money" />
+                    android:src="@drawable/profile_icon_money" />
 
                 <TextView
                     android:id="@+id/play_layout_txt_money"
@@ -129,7 +129,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/atp__activity_player_button_image_help_audience" />
+                android:background="@drawable/button_image_help_audience" />
 
             <ImageView
                 android:id="@+id/play_layout_btnCall"
@@ -175,7 +175,7 @@
                 android:layout_height="35dp"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/atp__activity_player_layout_play_order_question2"
+                android:background="@drawable/play_order_question"
                 android:gravity="center"
                 android:text="Câu: 1"
                 android:textColor="@android:color/black"
