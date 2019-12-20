@@ -2,11 +2,13 @@ package com.ntmhien.ailatrieuphu.music;
 
 public class Music{
     private String Title;
-    private int File;
+    private int File1;
+    private int File2;
 
-    public Music(String title, int file) {
+    public Music(String title, int file1, int file2) {
         Title = title;
-        File = file;
+        File1 = file1;
+        File2 = file2;
     }
 
     public String getTitle() {
@@ -17,11 +19,19 @@ public class Music{
         Title = title;
     }
 
-    public int getFile() {
-        return File;
+    public int getFile1() {
+        return File1;
     }
 
-    public void setFile(int file) {
-        File = file;
+    public void setFile1(int file1) {
+        File1 = file1;
+    }
+
+    public int getFile2() {
+        return File2;
+    }
+
+    public void setFile2(int file2) {
+        File2 = file2;
     }
 }
