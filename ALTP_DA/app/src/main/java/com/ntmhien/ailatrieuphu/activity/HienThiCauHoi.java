@@ -34,7 +34,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private int point = 0;
     private TextView m_txt_num;
     private TextView m_txt_content;
-    private TextView m_DA1, m_DA2, m_DA3, m_DA4;
+    private TextView m_DA1, m_DA2, m_DA3, m_DA4, m_Point;
 
     private DrawerLayout dl;
     private ImageView Prof;
@@ -111,6 +111,9 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         m_DA2 = findViewById(R.id.B);
         m_DA3 = findViewById(R.id.C);
         m_DA4 = findViewById(R.id.D);
+
+        m_Point=findViewById(R.id.txtPoint);
+
         progressBar = findViewById(R.id.timeProgressBar);
 
         dl = findViewById(R.id.dlcauhoi);
@@ -210,6 +213,10 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 v.setBackgroundResource(R.drawable.player_answer_background_true);
             }
         },3500);
+
+        //Cộng điểm
+        point = point + 1000;
+        m_Point.setText("Điểm: " + point);
 
         handler.postDelayed(new Runnable() {
             @Override

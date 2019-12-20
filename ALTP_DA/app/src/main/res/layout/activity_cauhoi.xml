@@ -141,7 +141,7 @@
         </TableRow>
 
         <TextView
-            android:id="@+id/txtSoCau1"
+            android:id="@+id/txtPoint"
             android:layout_width="350dp"
             android:layout_height="30dp"
             android:layout_gravity="center|top"
