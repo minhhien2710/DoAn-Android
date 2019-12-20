@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private TextView m_txt_num;
     private TextView m_txt_content;
     private TextView m_DA1, m_DA2, m_DA3, m_DA4, m_Point;
-
+    private ImageView btnCall, btnAudience, btnCredit, btn5050, btnChange;
     private DrawerLayout dl;
     private ImageView Prof;
 
@@ -118,6 +119,12 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
         dl = findViewById(R.id.dlcauhoi);
         Prof = findViewById(R.id.imgAvatar);
+
+        btn5050 = (ImageView) findViewById(R.id.btn50_50);
+        btnAudience = (ImageView) findViewById(R.id.btnAudience);
+        btnChange = (ImageView) findViewById(R.id.btnChuyencau);
+        btnCall = (ImageView) findViewById(R.id.btnCall);
+        btnCredit = (ImageView) findViewById(R.id.btnCredit);
     }
 
     public void ShowQuestion(int pos) {
@@ -176,6 +183,12 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         m_DA3.setOnClickListener(this);
         m_DA4.setOnClickListener(this);
 
+        btnCredit.setOnClickListener(this);
+        btnAudience.setOnClickListener(this);
+        btnCall.setOnClickListener(this);
+        btnChange.setOnClickListener(this);
+        btn5050.setOnClickListener(this);
+
         Prof.setOnClickListener(this);
     }
 
@@ -225,7 +238,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 loadTime.cancel(true);
                 loadTime = new LoadTime(HienThiCauHoi.this);
                 loadTime.execute();
-                v.setBackgroundResource(R.drawable.level_click_bg);
+                v.setBackgroundResource(R.drawable.btn_answer);
                 progressBar.setVisibility(View.VISIBLE);
                 setClickAble(true);
                 //Music
@@ -261,8 +274,24 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             case R.id.D:
                 xuLyDungSai(v, "D");
                 break;
+            case R.id.btnCredit:
+                btnCredit.setEnabled(false);
+                break;
+            case R.id.btn50_50:
+                btn5050.setEnabled(false);
+                break;
+            case R.id.btnChuyencau:
+                btnChange.setEnabled(false);
+                break;
+            case R.id.btnCall:
+                btnCall.setEnabled(false);
+                break;
+            case R.id.btnAudience:
+                btnAudience.setEnabled(false);
+                break;
             default:
                 break;
+
         }
     }
 }

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dlcauhoi"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.ntmhien.ailatrieuphu.activity.HienThiCauHoi"
     android:background="#2D5F83">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:onClick="Prof"
         android:orientation="vertical">
 
         <TableRow
@@ -100,44 +101,49 @@
             android:weightSum="5">
 
             <ImageView
-                android:id="@+id/play_layout_btnStop"
+                android:id="@+id/btnCredit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/level_dung" />
+                android:background="@drawable/btn_stop_bg"
+                android:onClick="onClick" />
 
             <ImageView
-                android:id="@+id/play_layout_btnchuyencau"
+                android:id="@+id/btnChuyencau"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/level_chuyencau" />
+                android:background="@drawable/btn_change_bg"
+                android:onClick="onClick" />
 
             <ImageView
-                android:id="@+id/play_layout_btn50_50"
+                android:id="@+id/btn50_50"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/drawlevel_5050" />
+                android:background="@drawable/btn_5050_bg"
+                android:onClick="onClick" />
 
             <ImageView
-                android:id="@+id/play_layout_Audience"
+                android:id="@+id/btnAudience"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/button_image_help_audience" />
+                android:background="@drawable/btn_audience_bg"
+                android:onClick="onClick" />
 
             <ImageView
-                android:id="@+id/play_layout_btnCall"
+                android:id="@+id/btnCall"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/level_call" />
+                android:background="@drawable/btn_call_bg"
+                android:onClick="onClick" />
         </TableRow>
 
         <TextView
@@ -199,7 +205,7 @@
                 android:layout_height="0dp"
 
                 android:layout_weight="1"
-                android:background="@drawable/level_click_bg"
+                android:background="@drawable/btn_answer"
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="A:"
@@ -213,7 +219,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/level_click_bg"
+                android:background="@drawable/btn_answer"
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="B:"
@@ -227,7 +233,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/level_click_bg"
+                android:background="@drawable/btn_answer"
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="C:"
@@ -241,7 +247,7 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="2dp"
                 android:layout_weight="1"
-                android:background="@drawable/level_click_bg"
+                android:background="@drawable/btn_answer"
                 android:gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="D:"
