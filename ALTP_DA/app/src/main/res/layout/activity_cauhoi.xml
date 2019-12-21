@@ -153,7 +153,7 @@
             android:layout_gravity="center|top"
             android:background="@drawable/bg_point3"
             android:gravity="center"
-            android:text="Điểm ✡:"
+            android:text="Điểm:"
             android:textColor="#FFEB3B"
             android:textSize="20sp" />
 

@@ -40,8 +40,8 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private int point = 0;
     private TextView m_txt_num;
     private TextView m_txt_content;
-    private TextView m_DA1, m_DA2, m_DA3, m_DA4, m_Point;
-    private TextView tv_DA[];
+    private TextView m_Point;
+    private TextView txt_DA[];
     private ImageView btnCall, btnAudience, btnCredit, btn5050, btnChange;
     private DrawerLayout dl;
     private ImageView Prof;
@@ -56,7 +56,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cauhoi);
 
-        tv_DA = new TextView[4];
+        txt_DA = new TextView[4];
 
         setLoadTime();
         findViewByIds();
@@ -67,10 +67,10 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private void findViewByIds() {
         m_txt_num = (TextView) findViewById(R.id.txtSoCau);
         m_txt_content = (TextView) findViewById(R.id.txtCauHoi);
-        tv_DA[0] = findViewById(R.id.A);
-        tv_DA[1] = findViewById(R.id.B);
-        tv_DA[2] = findViewById(R.id.C);
-        tv_DA[3] = findViewById(R.id.D);
+        txt_DA[0] = findViewById(R.id.A);
+        txt_DA[1] = findViewById(R.id.B);
+        txt_DA[2] = findViewById(R.id.C);
+        txt_DA[3] = findViewById(R.id.D);
 
         m_Point = findViewById(R.id.txtPoint);
 
@@ -87,10 +87,10 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     }
 
     private void setEvents() {
-        tv_DA[0].setOnClickListener(this);
-        tv_DA[1].setOnClickListener(this);
-        tv_DA[2].setOnClickListener(this);
-        tv_DA[3].setOnClickListener(this);
+        txt_DA[0].setOnClickListener(this);
+        txt_DA[1].setOnClickListener(this);
+        txt_DA[2].setOnClickListener(this);
+        txt_DA[3].setOnClickListener(this);
 
         btnCredit.setOnClickListener(this);
         btnAudience.setOnClickListener(this);
@@ -118,17 +118,17 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 if (get_lst_cauhoi(jSonString) == true) {
                     m_txt_num.setText("Câu: 1");
                     m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
-                    tv_DA[0].setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
-                    tv_DA[1].setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
-                    tv_DA[2].setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
-                    tv_DA[3].setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
+                    txt_DA[0].setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
+                    txt_DA[1].setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
+                    txt_DA[2].setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
+                    txt_DA[3].setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
                 } else {
                     m_txt_content.setText("API không hoạt động.");
                     m_txt_num.setVisibility(View.INVISIBLE);
-                    tv_DA[0].setVisibility(View.INVISIBLE);
-                    tv_DA[1].setVisibility(View.INVISIBLE);
-                    tv_DA[2].setVisibility(View.INVISIBLE);
-                    tv_DA[3].setVisibility(View.INVISIBLE);
+                    txt_DA[0].setVisibility(View.INVISIBLE);
+                    txt_DA[1].setVisibility(View.INVISIBLE);
+                    txt_DA[2].setVisibility(View.INVISIBLE);
+                    txt_DA[3].setVisibility(View.INVISIBLE);
                 }
             }
         }, 6000);
@@ -153,21 +153,27 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
 
     public void ShowQuestion(int pos) {
-        tv_DA[0].setEnabled(true);
-        tv_DA[1].setEnabled(true);
-        tv_DA[2].setEnabled(true);
-        tv_DA[3].setEnabled(true);
-        tv_DA[0].setBackgroundResource(R.drawable.answer_background_normal);
-        tv_DA[1].setBackgroundResource(R.drawable.answer_background_normal);
-        tv_DA[2].setBackgroundResource(R.drawable.answer_background_normal);
-        tv_DA[3].setBackgroundResource(R.drawable.answer_background_normal);
+        //Setup lại
+        loadTime.cancel(true);
+        loadTime = new LoadTime(HienThiCauHoi.this);
+        loadTime.execute();
+
+        txt_DA[0].setBackgroundResource(R.drawable.answer_background_normal);
+        txt_DA[1].setBackgroundResource(R.drawable.answer_background_normal);
+        txt_DA[2].setBackgroundResource(R.drawable.answer_background_normal);
+        txt_DA[3].setBackgroundResource(R.drawable.answer_background_normal);
+
+        progressBar.setVisibility(View.VISIBLE);
+        setClickAble(true);
+
+        //Chuyển câu
         int sttcau = pos + 1;
         m_txt_num.setText("Câu: " + sttcau);
         m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
-        tv_DA[0].setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
-        tv_DA[1].setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
-        tv_DA[2].setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
-        tv_DA[3].setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
+        txt_DA[0].setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
+        txt_DA[1].setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
+        txt_DA[2].setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
+        txt_DA[3].setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
     }
 
     private Boolean get_lst_cauhoi(String jSonString) {
@@ -206,7 +212,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             return false;
         }
     }
-
 
     private void xuLyDungSai(final View v, final String DapAn) {
         setClickAble(false);
@@ -250,13 +255,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //setup lại
-                loadTime.cancel(true);
-                loadTime = new LoadTime(HienThiCauHoi.this);
-                loadTime.execute();
-                v.setBackgroundResource(R.drawable.btn_answer);
-                progressBar.setVisibility(View.VISIBLE);
-                setClickAble(true);
                 //Music
                 musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
                 //Câu kế tiếp
@@ -268,10 +266,16 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     }
 
     private void setClickAble(boolean b) {
-        tv_DA[0].setClickable(b);
-        tv_DA[1].setClickable(b);
-        tv_DA[2].setClickable(b);
-        tv_DA[3].setClickable(b);
+        txt_DA[0].setClickable(b);
+        txt_DA[1].setClickable(b);
+        txt_DA[2].setClickable(b);
+        txt_DA[3].setClickable(b);
+
+        btnCredit.setClickable(b);
+        btnAudience.setClickable(b);
+        btnCall.setClickable(b);
+        btnChange.setClickable(b);
+        btn5050.setClickable(b);
     }
 
     public int getTrueAnswer() {
@@ -331,9 +335,9 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                     int temp = random.nextInt(4) + 1;
                     if (temp != getTrueAnswer() && temp != b) {
                         b = temp;
-                        tv_DA[b - 1].setEnabled(false);
-                        tv_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide2);
-                        tv_DA[b - 1].setText("");
+                        txt_DA[b - 1].setEnabled(false);
+                        txt_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide2);
+                        txt_DA[b - 1].setText("");
                         count++;
                     }
                 }
