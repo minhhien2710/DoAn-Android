@@ -2,7 +2,10 @@ package com.ntmhien.ailatrieuphu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Gravity;
@@ -12,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ntmhien.ailatrieuphu.dialogs.TroGiupKhangGia;
 import com.ntmhien.ailatrieuphu.model.CauHoi;
 import com.ntmhien.ailatrieuphu.fragments.LoadTime;
 import com.ntmhien.ailatrieuphu.R;
+import com.ntmhien.ailatrieuphu.music.Music;
 import com.ntmhien.ailatrieuphu.music.MusicManager;
 
 import org.json.JSONArray;
@@ -36,9 +41,11 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private TextView m_txt_num;
     private TextView m_txt_content;
     private TextView m_DA1, m_DA2, m_DA3, m_DA4, m_Point;
+    private TextView tv_DA[];
     private ImageView btnCall, btnAudience, btnCredit, btn5050, btnChange;
     private DrawerLayout dl;
     private ImageView Prof;
+    private TroGiupKhangGia troGiupKhangGia;
 
     List<Integer> number = new ArrayList<Integer>();
 
@@ -49,10 +56,49 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cauhoi);
 
+        tv_DA = new TextView[4];
+
         setLoadTime();
         findViewByIds();
         setEvents();
         setCauHoi();
+    }
+
+    private void findViewByIds() {
+        m_txt_num = (TextView) findViewById(R.id.txtSoCau);
+        m_txt_content = (TextView) findViewById(R.id.txtCauHoi);
+        tv_DA[0] = findViewById(R.id.A);
+        tv_DA[1] = findViewById(R.id.B);
+        tv_DA[2] = findViewById(R.id.C);
+        tv_DA[3] = findViewById(R.id.D);
+
+        m_Point = findViewById(R.id.txtPoint);
+
+        progressBar = findViewById(R.id.timeProgressBar);
+
+        dl = findViewById(R.id.dlcauhoi);
+        Prof = findViewById(R.id.imgAvatar);
+
+        btn5050 = (ImageView) findViewById(R.id.btn50_50);
+        btnAudience = (ImageView) findViewById(R.id.btnAudience);
+        btnChange = (ImageView) findViewById(R.id.btnChuyencau);
+        btnCall = (ImageView) findViewById(R.id.btnCall);
+        btnCredit = (ImageView) findViewById(R.id.btnCredit);
+    }
+
+    private void setEvents() {
+        tv_DA[0].setOnClickListener(this);
+        tv_DA[1].setOnClickListener(this);
+        tv_DA[2].setOnClickListener(this);
+        tv_DA[3].setOnClickListener(this);
+
+        btnCredit.setOnClickListener(this);
+        btnAudience.setOnClickListener(this);
+        btnCall.setOnClickListener(this);
+        btnChange.setOnClickListener(this);
+        btn5050.setOnClickListener(this);
+
+        Prof.setOnClickListener(this);
     }
 
     private void setCauHoi() {
@@ -72,20 +118,20 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 if (get_lst_cauhoi(jSonString) == true) {
                     m_txt_num.setText("Câu: 1");
                     m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
-                    m_DA1.setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
-                    m_DA2.setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
-                    m_DA3.setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
-                    m_DA4.setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
+                    tv_DA[0].setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
+                    tv_DA[1].setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
+                    tv_DA[2].setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
+                    tv_DA[3].setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
                 } else {
                     m_txt_content.setText("API không hoạt động.");
                     m_txt_num.setVisibility(View.INVISIBLE);
-                    m_DA1.setVisibility(View.INVISIBLE);
-                    m_DA2.setVisibility(View.INVISIBLE);
-                    m_DA3.setVisibility(View.INVISIBLE);
-                    m_DA4.setVisibility(View.INVISIBLE);
+                    tv_DA[0].setVisibility(View.INVISIBLE);
+                    tv_DA[1].setVisibility(View.INVISIBLE);
+                    tv_DA[2].setVisibility(View.INVISIBLE);
+                    tv_DA[3].setVisibility(View.INVISIBLE);
                 }
             }
-        },6000);
+        }, 6000);
     }
 
     private void setLoadTime() {
@@ -102,39 +148,18 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                     loadTime.execute();
                 }
             }
-        },5300);
+        }, 5300);
     }
 
-    private void findViewByIds() {
-        m_txt_num = (TextView) findViewById(R.id.txtSoCau);
-        m_txt_content = (TextView) findViewById(R.id.txtCauHoi);
-        m_DA1 = findViewById(R.id.A);
-        m_DA2 = findViewById(R.id.B);
-        m_DA3 = findViewById(R.id.C);
-        m_DA4 = findViewById(R.id.D);
-
-        m_Point=findViewById(R.id.txtPoint);
-
-        progressBar = findViewById(R.id.timeProgressBar);
-
-        dl = findViewById(R.id.dlcauhoi);
-        Prof = findViewById(R.id.imgAvatar);
-
-        btn5050 = (ImageView) findViewById(R.id.btn50_50);
-        btnAudience = (ImageView) findViewById(R.id.btnAudience);
-        btnChange = (ImageView) findViewById(R.id.btnChuyencau);
-        btnCall = (ImageView) findViewById(R.id.btnCall);
-        btnCredit = (ImageView) findViewById(R.id.btnCredit);
-    }
 
     public void ShowQuestion(int pos) {
         int sttcau = pos + 1;
         m_txt_num.setText("Câu: " + sttcau);
         m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
-        m_DA1.setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
-        m_DA2.setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
-        m_DA3.setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
-        m_DA4.setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
+        tv_DA[0].setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
+        tv_DA[1].setText("B. " + lst_cauhoi.get(number.get(pos)).PhuongAn2);
+        tv_DA[2].setText("C. " + lst_cauhoi.get(number.get(pos)).PhuongAn3);
+        tv_DA[3].setText("D. " + lst_cauhoi.get(number.get(pos)).PhuongAn4);
     }
 
     private Boolean get_lst_cauhoi(String jSonString) {
@@ -157,13 +182,10 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
             //Random câu hỏi
             Random rd = new Random();
-            for (int i = 0; i < num; i++)
-            {
-                while(true)
-                {
+            for (int i = 0; i < num; i++) {
+                while (true) {
                     Integer next = rd.nextInt(num);
-                    if (!number.contains(next))
-                    {
+                    if (!number.contains(next)) {
                         number.add(next);
                         break;
                     }
@@ -177,22 +199,8 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void setEvents() {
-        m_DA1.setOnClickListener(this);
-        m_DA2.setOnClickListener(this);
-        m_DA3.setOnClickListener(this);
-        m_DA4.setOnClickListener(this);
 
-        btnCredit.setOnClickListener(this);
-        btnAudience.setOnClickListener(this);
-        btnCall.setOnClickListener(this);
-        btnChange.setOnClickListener(this);
-        btn5050.setOnClickListener(this);
-
-        Prof.setOnClickListener(this);
-    }
-
-    private void xuLyDungSai(final View v, final String DapAn){
+    private void xuLyDungSai(final View v, final String DapAn) {
         setClickAble(false);
 
         musicManager = new MusicManager();
@@ -202,14 +210,14 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         loadTime.cancel(true);
         v.setBackgroundResource(R.drawable.player_answer_background_selected);
 
-        musicManager.setNhacChonDapAn(this,DapAn);
+        musicManager.setNhacChonDapAn(this, DapAn);
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 musicManager.setNhacChuanBiDocDapAn(HienThiCauHoi.this);
                 if (DapAn.equals(lst_cauhoi.get(number.get(pos)).DapAn)) {
-                    traLoiDung(v,DapAn);
+                    traLoiDung(v, DapAn);
                 }
             }
         }, 3500);
@@ -222,10 +230,10 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                musicManager.setNhacChonDapAnDung(HienThiCauHoi.this,DapAn);
+                musicManager.setNhacChonDapAnDung(HienThiCauHoi.this, DapAn);
                 v.setBackgroundResource(R.drawable.player_answer_background_true);
             }
-        },3500);
+        }, 3500);
 
         //Cộng điểm
         point = point + 1000;
@@ -248,14 +256,41 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
                 ShowQuestion(pos);
             }
-        },8000);
+        }, 8000);
     }
 
     private void setClickAble(boolean b) {
-        m_DA1.setClickable(b);
-        m_DA2.setClickable(b);
-        m_DA3.setClickable(b);
-        m_DA4.setClickable(b);
+        tv_DA[0].setClickable(b);
+        tv_DA[1].setClickable(b);
+        tv_DA[2].setClickable(b);
+        tv_DA[3].setClickable(b);
+    }
+
+    public int getTrueAnswer() {
+        if (lst_cauhoi.get(number.get(pos)).DapAn == "A")
+            return 1;
+        if (lst_cauhoi.get(number.get(pos)).DapAn == "B")
+            return 2;
+        if (lst_cauhoi.get(number.get(pos)).DapAn == "C")
+            return 3;
+        else {
+            return 4;
+        }
+//        switch (lst_cauhoi.get(number.get(pos)).DapAn) {
+//            case "A":
+//                return 1;
+//            break;
+//            case "B":
+//                return 2;
+//            break;
+//            case "C":
+//                return 3;
+//            break;
+//            case "D":
+//                return 4;
+//            break;
+//            default:
+//                break;
     }
 
     @Override
@@ -263,7 +298,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         musicManager = new MusicManager();
         switch (v.getId()) {
             case R.id.A:
-                xuLyDungSai(v,"A");
+                xuLyDungSai(v, "A");
                 break;
             case R.id.B:
                 xuLyDungSai(v, "B");
@@ -278,7 +313,22 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 btnCredit.setEnabled(false);
                 break;
             case R.id.btn50_50:
+                setClickAble(false);
                 btn5050.setEnabled(false);
+                int count = 0;
+                int b = 0;
+                setClickAble(true);
+                Random random = new Random();
+                while (count < 2) {
+                    int temp = random.nextInt(4) + 1;
+                    if (temp != getTrueAnswer() && temp != b) {
+                        b = temp;
+                        tv_DA[b - 1].setEnabled(false);
+                        tv_DA[b - 1].setBackgroundResource(R.drawable.player_answer_background_hide);
+                        tv_DA[b - 1].setText("");
+                        count++;
+                    }
+                }
                 break;
             case R.id.btnChuyencau:
                 btnChange.setEnabled(false);
