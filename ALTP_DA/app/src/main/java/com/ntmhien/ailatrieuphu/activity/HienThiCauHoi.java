@@ -151,7 +151,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         }, 5300);
     }
 
-
     public void ShowQuestion(int pos) {
         //Setup lại
         loadTime.cancel(true);
@@ -278,37 +277,13 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         btn5050.setClickable(b);
     }
 
-    public int getTrueAnswer() {
-        int d = 0;
-        if (lst_cauhoi.get(number.get(pos)).DapAn == "A")
-            d = 1;
-        if (lst_cauhoi.get(number.get(pos)).DapAn == "B")
-            d = 2;
-        if (lst_cauhoi.get(number.get(pos)).DapAn == "C")
-            d = 3;
-        if (lst_cauhoi.get(number.get(pos)).DapAn == "D")
-            d = 4;
-        return d;
-//        switch (lst_cauhoi.get(number.get(pos)).DapAn) {
-//            case "A":
-//                return 1;
-//            break;
-//            case "B":
-//                return 2;
-//            break;
-//            case "C":
-//                return 3;
-//            break;
-//            case "D":
-//                return 4;
-//            break;
-//            default:
-//                break;
-    }
-
     @Override
     public void onClick(final View v) {
         musicManager = new MusicManager();
+        //Chuyển ABCD thành 1234
+        String DA = lst_cauhoi.get(number.get(pos)).DapAn;
+        int iDA = ( DA.equals("A") ? 1 : DA.equals("B") ? 2 : DA.equals("C") ? 3 : 4);
+
         switch (v.getId()) {
             case R.id.A:
                 xuLyDungSai(v, "A");
@@ -327,13 +302,15 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn50_50:
                 btn5050.setEnabled(false);
+                setClickAble(true);
+
+                Random random = new Random();
                 int count = 0;
                 int b = 0;
-                setClickAble(true);
-                Random random = new Random();
+
                 while (count < 2) {
                     int temp = random.nextInt(4) + 1;
-                    if (temp != getTrueAnswer() && temp != b) {
+                    if (temp != iDA && temp != b) {
                         b = temp;
                         txt_DA[b - 1].setEnabled(false);
                         txt_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide2);
