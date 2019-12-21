@@ -153,6 +153,14 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
 
     public void ShowQuestion(int pos) {
+        tv_DA[0].setEnabled(true);
+        tv_DA[1].setEnabled(true);
+        tv_DA[2].setEnabled(true);
+        tv_DA[3].setEnabled(true);
+        tv_DA[0].setBackgroundResource(R.drawable.answer_background_normal);
+        tv_DA[1].setBackgroundResource(R.drawable.answer_background_normal);
+        tv_DA[2].setBackgroundResource(R.drawable.answer_background_normal);
+        tv_DA[3].setBackgroundResource(R.drawable.answer_background_normal);
         int sttcau = pos + 1;
         m_txt_num.setText("Câu: " + sttcau);
         m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
@@ -267,15 +275,16 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     }
 
     public int getTrueAnswer() {
+        int d = 0;
         if (lst_cauhoi.get(number.get(pos)).DapAn == "A")
-            return 1;
+            d = 1;
         if (lst_cauhoi.get(number.get(pos)).DapAn == "B")
-            return 2;
+            d = 2;
         if (lst_cauhoi.get(number.get(pos)).DapAn == "C")
-            return 3;
-        else {
-            return 4;
-        }
+            d = 3;
+        if (lst_cauhoi.get(number.get(pos)).DapAn == "D")
+            d = 4;
+        return d;
 //        switch (lst_cauhoi.get(number.get(pos)).DapAn) {
 //            case "A":
 //                return 1;
@@ -313,7 +322,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 btnCredit.setEnabled(false);
                 break;
             case R.id.btn50_50:
-                setClickAble(false);
                 btn5050.setEnabled(false);
                 int count = 0;
                 int b = 0;
@@ -324,7 +332,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                     if (temp != getTrueAnswer() && temp != b) {
                         b = temp;
                         tv_DA[b - 1].setEnabled(false);
-                        tv_DA[b - 1].setBackgroundResource(R.drawable.player_answer_background_hide);
+                        tv_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide2);
                         tv_DA[b - 1].setText("");
                         count++;
                     }
