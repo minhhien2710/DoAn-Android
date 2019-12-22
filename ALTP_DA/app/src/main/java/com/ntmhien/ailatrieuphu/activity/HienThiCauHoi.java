@@ -284,7 +284,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         musicManager = new MusicManager();
         //Chuyển ABCD thành 1234
         String DA = lst_cauhoi.get(number.get(pos)).DapAn;
-        int iDA = ( DA.equals("A") ? 1 : DA.equals("B") ? 2 : DA.equals("C") ? 3 : 4);
+        int iDA = (DA.equals("A") ? 1 : DA.equals("B") ? 2 : DA.equals("C") ? 3 : 4);
 
         switch (v.getId()) {
             case R.id.A:
@@ -337,7 +337,18 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnCall:
                 btnCall.setEnabled(false);
-                goiChoNguoiThan.setTrueAnswer(iDA);
+                //Xử lý tỉ lệ đúng 90%
+                Random random2 = new Random();
+                int tile = random2.nextInt(10) + 1;
+                if (tile == 5) {
+                    for (int i = 1; i < 4; i++) {
+                        int n = random2.nextInt(4) + 1;
+                        if (n != iDA) ;
+                        goiChoNguoiThan.setTrueAnswer(n);
+                    }
+                } else {
+                    goiChoNguoiThan.setTrueAnswer(iDA);
+                }
                 goiChoNguoiThan.show();
                 break;
             case R.id.btnAudience:

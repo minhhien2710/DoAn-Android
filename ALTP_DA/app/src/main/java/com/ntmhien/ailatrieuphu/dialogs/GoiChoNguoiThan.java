@@ -31,8 +31,6 @@ public class GoiChoNguoiThan extends Dialog {
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(false);
 
-
-
         tvAnswer = (TextView) findViewById(R.id.tv_answer);
 
         findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
