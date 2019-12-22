@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -16,19 +18,20 @@ import android.widget.TextView;
 import com.ntmhien.ailatrieuphu.R;
 
 public class GoiChoNguoiThan extends Dialog {
-    private ImageButton btnHelpCall[];
+
     private TextView tvAnswer;
-    private LinearLayout answerLayout, callLayout[];
-    private RelativeLayout callsLayout;
 
     private String trueAnswer;
 
     public GoiChoNguoiThan(@NonNull Context context) {
         super(context);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setCanceledOnTouchOutside(false);
-        setCancelable(false);
         setContentView(R.layout.activity_goi_cho_nguoi_than);
+        getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        setCancelable(false);
+
+
 
         tvAnswer = (TextView) findViewById(R.id.tv_answer);
 
