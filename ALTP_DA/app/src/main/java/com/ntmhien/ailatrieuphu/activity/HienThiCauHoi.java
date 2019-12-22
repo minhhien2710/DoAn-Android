@@ -58,6 +58,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         txt_DA = new TextView[4];
 
         goiChoNguoiThan = new GoiChoNguoiThan(this);
+        troGiupKhangGia = new TroGiupKhangGia(this);
 
         setLoadTime();
         findViewByIds();
@@ -303,8 +304,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn50_50:
                 btn5050.setEnabled(false);
-                setClickAble(true);
-
                 Random random = new Random();
                 int count = 0;
                 int b = 0;
@@ -343,6 +342,15 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnAudience:
                 btnAudience.setEnabled(false);
+                String cs = "";
+                for (int i = 0; i < txt_DA.length; i++) {
+                    if (!txt_DA[i].isEnabled()) {
+                        cs += i;
+                    }
+                }
+                troGiupKhangGia.prepareVote(iDA, cs);
+                troGiupKhangGia.show();
+                troGiupKhangGia.voteAnswer();
                 break;
             default:
                 break;
