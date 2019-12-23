@@ -115,6 +115,9 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 setClickAble(true);
                 progressBar.setVisibility(View.VISIBLE);
 
+                musicManager= new MusicManager();
+                musicManager.setNhacNenKhiDangTraLoi(HienThiCauHoi.this);
+
                 if (get_lst_cauhoi(jSonString) == true) {
                     m_txt_num.setText("Câu: 1");
                     m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
@@ -244,12 +247,11 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             public void run() {
                 musicManager.setNhacChonDapAnDung(HienThiCauHoi.this, DapAn);
                 v.setBackgroundResource(R.drawable.player_answer_background_true);
+                //Cộng điểm
+                point = point + 1000;
+                m_Point.setText("Điểm: " + point);
             }
         }, 3500);
-
-        //Cộng điểm
-        point = point + 1000;
-        m_Point.setText("Điểm: " + point);
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -302,7 +304,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn50_50:
                 btn5050.setEnabled(false);
-                setClickAble(true);
 
                 Random random = new Random();
                 int count = 0;
