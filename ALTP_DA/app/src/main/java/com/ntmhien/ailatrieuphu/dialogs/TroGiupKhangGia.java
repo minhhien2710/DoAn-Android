@@ -152,7 +152,6 @@ public class TroGiupKhangGia extends Dialog {
                                     values.add(max - ((values.get(0) + values.get(1)) + values.get(2)));
                                     Collections.sort(values);
                                     Collections.reverse(values);
-
                                     return;
                                 }
                             }
