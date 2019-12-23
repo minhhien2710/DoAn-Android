@@ -323,7 +323,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnChuyencau:
                 btnChange.setEnabled(false);
-                musicManager = new MusicManager();
                 handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -339,19 +338,24 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnCall:
                 btnCall.setEnabled(false);
+
                 //Xử lý tỉ lệ đúng 90%
-                Random random2 = new Random();
-                int tile = random2.nextInt(10) + 1;
-                if (tile == 5) {
-                    for (int i = 1; i < 4; i++) {
-                        int n = random2.nextInt(4) + 1;
-                        if (n != iDA) ;
-                        goiChoNguoiThan.setTrueAnswer(n);
+                Random rd = new Random();
+                int tile = rd.nextInt(10) + 1;
+
+                if ( tile == 4 ) {
+                    while ( tile > 0 ){
+                        int n = rd.nextInt(4) + 1;
+                        if ( n != iDA ) {
+                            goiChoNguoiThan.setTrueAnswer(n);
+                            break;
+                        }
                     }
                 } else {
                     goiChoNguoiThan.setTrueAnswer(iDA);
                 }
                 goiChoNguoiThan.show();
+
                 break;
             case R.id.btnAudience:
                 btnAudience.setEnabled(false);
