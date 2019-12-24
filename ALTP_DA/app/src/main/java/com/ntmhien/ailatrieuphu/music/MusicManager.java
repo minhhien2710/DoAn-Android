@@ -30,12 +30,24 @@ public class MusicManager{
         musicArrayList.add(new Music("10-Chọn Câu D Đúng",R.raw.true_d2,R.raw.true_d3));
         //Music Chuẩn Bị Đọc Đáp Án
         musicArrayList.add(new Music("11-Chuẩn Bị Đọc Đáp Án",R.raw.ans_now1,R.raw.ans_now2));
-
+        //Music Nền Khi Đang Trả Lời
+        musicArrayList.add(new Music("12-Nhạc Nền Khi Đang Trả Lời",R.raw.background_music,R.raw.background_music_c));
     }
 
     public void setNhacNen(Activity activity){
         addMusic();
         mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(0).getFile1());
+        mediaPlayer.start();
+    }
+
+    public void setNhacNenKhiDangTraLoi(Activity activity){
+        addMusic();
+
+        Random rd = new Random();
+        int rdInt = rd.nextInt(2) + 1;
+
+        if(rdInt==1)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(12).getFile1());
+        else if (rdInt==2)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(12).getFile2());
         mediaPlayer.start();
     }
 
