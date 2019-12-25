@@ -3,6 +3,8 @@ package com.ntmhien.ailatrieuphu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -280,7 +282,30 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         btnChange.setClickable(b);
         btn5050.setClickable(b);
     }
-
+public void TiepTucChoi(){
+        AlertDialog.Builder b=new AlertDialog.Builder(this);
+        b.setTitle("Thông báo");
+        b.setIcon(R.drawable.profile_icon_money);
+        b.setMessage("Bạn có muốn sử dụng 100 Credit để tiếp tục: ");
+        b.setPositiveButton("Sử dụng Credit", new DialogInterface. OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                point = point + 1000;
+                m_Point.setText("Điểm: " + point);
+                pos++;
+                sttcau++;
+                if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
+                ShowQuestion(pos);
+            }});
+        b.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                HienThiCauHoi.this.finish();
+            }
+        });
+        b.create().show();
+    }
     @Override
     public void onClick(final View v) {
         musicManager = new MusicManager();
@@ -302,7 +327,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 xuLyDungSai(v, "D");
                 break;
             case R.id.btnCredit:
-                btnCredit.setEnabled(false);
+                TiepTucChoi();
                 break;
             case R.id.btn50_50:
                 btn5050.setEnabled(false);
@@ -338,13 +363,11 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnCall:
                 btnCall.setEnabled(false);
-
                 //Xử lý tỉ lệ đúng 90%
                 Random rd = new Random();
                 int tile = rd.nextInt(10) + 1;
-
-                if ( tile == 4 ) {
-                    while ( tile > 0 ){
+                if ( tile == 3 ) {
+                    while (true){
                         int n = rd.nextInt(4) + 1;
                         if ( n != iDA ) {
                             goiChoNguoiThan.setTrueAnswer(n);
@@ -359,13 +382,27 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btnAudience:
                 btnAudience.setEnabled(false);
+
                 String cs = "";
                 for (int i = 0; i < txt_DA.length; i++) {
                     if (!txt_DA[i].isEnabled()) {
                         cs += i;
                     }
                 }
-                troGiupKhangGia.prepareVote(iDA, cs);
+                //Xử lý tỉ lệ đúng 90%
+                Random rd2 = new Random();
+                int tile2 = rd2.nextInt(10) + 1;
+                if ( tile2 == 3 ) {
+                    while (true){
+                        int n2 = rd2.nextInt(4) + 1;
+                        if ( n2 != iDA ) {
+                            troGiupKhangGia.prepareVote(n2, cs);
+                            break;
+                        }
+                    }
+                } else {
+                    troGiupKhangGia.prepareVote(iDA, cs);
+                }
                 troGiupKhangGia.show();
                 troGiupKhangGia.voteAnswer();
                 break;
