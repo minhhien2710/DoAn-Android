@@ -9,12 +9,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ntmhien.ailatrieuphu.R;
+import com.ntmhien.ailatrieuphu.activity.HienThiCauHoi;
+import com.ntmhien.ailatrieuphu.music.MusicManager;
 
 public class LoadTime extends AsyncTask<Integer,Integer,Void> {
 
     private ProgressBar progressBar;
     private TextView textView;
     Activity contextParent;
+    MusicManager musicManager;
 
     public LoadTime(Activity contextParent) {
         this.contextParent = contextParent;
@@ -49,6 +52,9 @@ public class LoadTime extends AsyncTask<Integer,Integer,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
+
+        musicManager = new MusicManager();
+
         Toast.makeText(contextParent, "Hết thời gian !", Toast.LENGTH_SHORT).show();
         progressBar.setVisibility(ProgressBar.GONE);
 

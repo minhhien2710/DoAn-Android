@@ -9,9 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ntmhien.ailatrieuphu.dialogs.GoiChoNguoiThan;
 import com.ntmhien.ailatrieuphu.dialogs.TroGiupKhangGia;
@@ -46,7 +48,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private ImageView Prof;
     private TroGiupKhangGia troGiupKhangGia;
     private GoiChoNguoiThan goiChoNguoiThan;
-
 
     List<Integer> number = new ArrayList<Integer>();
 
@@ -236,9 +237,31 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 musicManager.setNhacChuanBiDocDapAn(HienThiCauHoi.this);
                 if (DapAn.equals(lst_cauhoi.get(number.get(pos)).DapAn)) {
                     traLoiDung(v, DapAn);
-                }
+                } else traLoiSai(v, lst_cauhoi.get(number.get(pos)).DapAn);
             }
         }, 3500);
+    }
+
+    private void traLoiSai(final View v, final String DapAn) {
+        musicManager = new MusicManager();
+        handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                musicManager.setNhacDapAnDungLa(HienThiCauHoi.this, DapAn);
+                v.setBackgroundResource(R.drawable.play_answer_background_wrong);
+                txt_DA[getDapAnDung()-1].setBackgroundResource(R.drawable.play_answer_background_true);
+                txt_DA[getDapAnDung()-1].startAnimation(AnimationUtils.loadAnimation(HienThiCauHoi.this,R.anim.fade_loop));
+            }
+        }, 3500);
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                notifyTiepTucChoi();
+            }
+        }, 8000);
     }
 
     private void traLoiDung(final View v, final String DapAn) {
@@ -249,10 +272,10 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             @Override
             public void run() {
                 musicManager.setNhacChonDapAnDung(HienThiCauHoi.this, DapAn);
-                v.setBackgroundResource(R.drawable.player_answer_background_true);
-                //Cộng điểm
-                point = point + 1000;
-                m_Point.setText("Điểm: " + point);
+                v.setBackgroundResource(R.drawable.play_answer_background_true);
+                v.startAnimation(AnimationUtils.loadAnimation(HienThiCauHoi.this,R.anim.fade_loop));
+
+                updatePoint();
             }
         }, 3500);
 
@@ -270,6 +293,36 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         }, 8000);
     }
 
+    public void notifyTiepTucChoi(){
+        musicManager = new MusicManager();
+
+        Toast.makeText(HienThiCauHoi.this, "Bạn đã trả lời sai !", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Tổng điểm của bạn là: "+point);
+        b.setIcon(R.drawable.profile_icon_money);
+        b.setMessage("Bạn có muốn sử dụng 500 Credit để chơi tiếp hay không? ");
+        b.setNegativeButton("Sử dụng Credit", new DialogInterface. OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                updatePoint();
+                musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
+                //Câu kế tiếp
+                pos++;
+                sttcau++;
+                if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
+                ShowQuestion(pos);
+            }});
+        b.setPositiveButton("Dừng cuộc chơi", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                musicManager.setNhacThuaCuoc(HienThiCauHoi.this);
+                HienThiCauHoi.this.finish();
+            }
+        });
+        b.create().show();
+    }
+
     private void setClickAble(boolean b) {
         txt_DA[0].setClickable(b);
         txt_DA[1].setClickable(b);
@@ -282,36 +335,21 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         btnChange.setClickable(b);
         btn5050.setClickable(b);
     }
-public void TiepTucChoi(){
-        AlertDialog.Builder b=new AlertDialog.Builder(this);
-        b.setTitle("Thông báo");
-        b.setIcon(R.drawable.profile_icon_money);
-        b.setMessage("Bạn có muốn sử dụng 100 Credit để tiếp tục: ");
-        b.setPositiveButton("Sử dụng Credit", new DialogInterface. OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                point = point + 1000;
-                m_Point.setText("Điểm: " + point);
-                pos++;
-                sttcau++;
-                if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
-                ShowQuestion(pos);
-            }});
-        b.setNegativeButton("Thoát", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                HienThiCauHoi.this.finish();
-            }
-        });
-        b.create().show();
+
+    private void updatePoint(){
+        point = point + 1000;
+        m_Point.setText("Điểm: " + point);
     }
+
+    private int getDapAnDung(){
+        String DA = lst_cauhoi.get(number.get(pos)).DapAn;
+        int iDA = (DA.equals("A") ? 1 : DA.equals("B") ? 2 : DA.equals("C") ? 3 : 4);
+        return iDA;
+    }
+
     @Override
     public void onClick(final View v) {
         musicManager = new MusicManager();
-        //Chuyển ABCD thành 1234
-        String DA = lst_cauhoi.get(number.get(pos)).DapAn;
-        int iDA = (DA.equals("A") ? 1 : DA.equals("B") ? 2 : DA.equals("C") ? 3 : 4);
 
         switch (v.getId()) {
             case R.id.A:
@@ -327,7 +365,6 @@ public void TiepTucChoi(){
                 xuLyDungSai(v, "D");
                 break;
             case R.id.btnCredit:
-                TiepTucChoi();
                 break;
             case R.id.btn50_50:
                 btn5050.setEnabled(false);
@@ -337,7 +374,7 @@ public void TiepTucChoi(){
 
                 while (count < 2) {
                     int temp = random.nextInt(4) + 1;
-                    if (temp != iDA && temp != b) {
+                    if (temp != getDapAnDung() && temp != b) {
                         b = temp;
                         txt_DA[b - 1].setEnabled(false);
                         txt_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide);
@@ -363,19 +400,20 @@ public void TiepTucChoi(){
                 break;
             case R.id.btnCall:
                 btnCall.setEnabled(false);
+
                 //Xử lý tỉ lệ đúng 90%
                 Random rd = new Random();
                 int tile = rd.nextInt(10) + 1;
                 if ( tile == 3 ) {
                     while (true){
                         int n = rd.nextInt(4) + 1;
-                        if ( n != iDA ) {
+                        if ( n != getDapAnDung() ) {
                             goiChoNguoiThan.setTrueAnswer(n);
                             break;
                         }
                     }
                 } else {
-                    goiChoNguoiThan.setTrueAnswer(iDA);
+                    goiChoNguoiThan.setTrueAnswer(getDapAnDung());
                 }
                 goiChoNguoiThan.show();
 
@@ -389,26 +427,27 @@ public void TiepTucChoi(){
                         cs += i;
                     }
                 }
+
                 //Xử lý tỉ lệ đúng 90%
                 Random rd2 = new Random();
                 int tile2 = rd2.nextInt(10) + 1;
                 if ( tile2 == 3 ) {
                     while (true){
                         int n2 = rd2.nextInt(4) + 1;
-                        if ( n2 != iDA ) {
+                        if ( n2 != getDapAnDung() ) {
                             troGiupKhangGia.prepareVote(n2, cs);
                             break;
                         }
                     }
                 } else {
-                    troGiupKhangGia.prepareVote(iDA, cs);
+                    troGiupKhangGia.prepareVote(getDapAnDung(), cs);
                 }
                 troGiupKhangGia.show();
                 troGiupKhangGia.voteAnswer();
+
                 break;
             default:
                 break;
-
         }
     }
 }

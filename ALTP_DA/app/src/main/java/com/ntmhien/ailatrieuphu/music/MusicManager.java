@@ -32,6 +32,14 @@ public class MusicManager{
         musicArrayList.add(new Music("11-Chuẩn Bị Đọc Đáp Án",R.raw.ans_now1,R.raw.ans_now2));
         //Music Nền Khi Đang Trả Lời
         musicArrayList.add(new Music("12-Nhạc Nền Khi Đang Trả Lời",R.raw.background_music,R.raw.background_music_c));
+        //Music Thua Cuộc
+        musicArrayList.add(new Music("13-Nhạc Thua Cuộc",R.raw.lose2,0));
+        musicArrayList.add(new Music("14-Nhạc Hết Giờ",R.raw.out_of_time,0));
+        //Music Đáp Án Đúng Là
+        musicArrayList.add(new Music("15-Đáp Án Đúng Là A",R.raw.lose_a,R.raw.lose_a2));
+        musicArrayList.add(new Music("16-Đáp Án Đúng Là B",R.raw.lose_b,R.raw.lose_b2));
+        musicArrayList.add(new Music("17-Đáp Án Đúng Là C",R.raw.lose_c,R.raw.lose_c2));
+        musicArrayList.add(new Music("18-Đáp Án Đúng Là D",R.raw.lose_d,R.raw.lose_d2));
     }
 
     public void setNhacNen(Activity activity){
@@ -137,5 +145,54 @@ public class MusicManager{
         if(rdInt==1) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(11).getFile1());
         else if (rdInt==2) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(11).getFile2());
         mediaPlayer.start();
+    }
+
+    public void setNhacHetGio(Activity activity){
+        addMusic();
+        mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(14).getFile1());
+        mediaPlayer.start();
+    }
+
+    public void setNhacThuaCuoc(Activity activity){
+        addMusic();
+
+        Random rd = new Random();
+        int rdInt = rd.nextInt(2) + 1;
+
+        if(rdInt==1)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(13).getFile1());
+        else if (rdInt==2)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(13).getFile2());
+        mediaPlayer.start();
+    }
+
+    public void setNhacDapAnDungLa(Activity activity, final String DapAn){
+        addMusic();
+
+        Random rd = new Random();
+        int rdInt = rd.nextInt(2) + 1;
+
+        switch (DapAn) {
+            case "A":
+                if(rdInt==1) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(15).getFile1());
+                else if (rdInt==2) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(15).getFile2());
+                mediaPlayer.start();
+                break;
+            case "B":
+                if(rdInt==1) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(16).getFile1());
+                else if (rdInt==2) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(16).getFile2());
+                mediaPlayer.start();
+                break;
+            case "C":
+                if(rdInt==1) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(17).getFile1());
+                else if (rdInt==2) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(17).getFile2());
+                mediaPlayer.start();
+                break;
+            case "D":
+                if(rdInt==1) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(18).getFile1());
+                else if (rdInt==2) mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(18).getFile2());
+                mediaPlayer.start();
+                break;
+            default:
+                break;
+        }
     }
 }
