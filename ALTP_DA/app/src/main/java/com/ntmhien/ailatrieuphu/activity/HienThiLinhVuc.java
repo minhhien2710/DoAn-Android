@@ -13,10 +13,11 @@ import com.ntmhien.ailatrieuphu.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.ntmhien.ailatrieuphu.model.LinhVuc;
 
 import java.util.ArrayList;
 
-public class LinhVuc extends AppCompatActivity implements View.OnClickListener {
+public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickListener {
     private DrawerLayout drawerLayout;
     private ImageView Prof;
     private ArrayList<LinhVuc> lst_linhvuc;

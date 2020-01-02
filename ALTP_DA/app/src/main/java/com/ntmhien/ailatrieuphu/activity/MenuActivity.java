@@ -7,9 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.ntmhien.ailatrieuphu.api.GetAPICauHoi;
 import com.ntmhien.ailatrieuphu.api.GetAPILinhVuc;
-import com.ntmhien.ailatrieuphu.music.MusicManager;
 import com.ntmhien.ailatrieuphu.R;
 
 import java.util.concurrent.ExecutionException;
@@ -28,7 +26,7 @@ public class MenuActivity extends AppCompatActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnProfile:
-                Intent intent = new Intent(MenuActivity.this, LinhVuc.class);
+                Intent intent = new Intent(MenuActivity.this, HienThiLinhVuc.class);
                 startActivity(intent);
                 break;
             case R.id.btnHistory:

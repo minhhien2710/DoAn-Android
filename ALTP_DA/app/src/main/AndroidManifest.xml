@@ -19,7 +19,7 @@
         <activity android:name=".activity.LichSuChoi" />
         <activity android:name=".activity.MenuActivity" />
         <activity android:name=".activity.QL_TaiKhoan" />
-        <activity android:name=".activity.LinhVuc" />
+        <activity android:name=".activity.HienThiLinhVuc" />
         <activity android:name=".activity.QuenMatKhau" />
         <activity android:name=".activity.DangKi" />
         <activity android:name=".activity.HienThiCauHoi" />
