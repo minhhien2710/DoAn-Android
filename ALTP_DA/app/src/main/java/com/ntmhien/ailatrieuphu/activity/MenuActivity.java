@@ -8,15 +8,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ntmhien.ailatrieuphu.api.GetAPICauHoi;
+import com.ntmhien.ailatrieuphu.api.GetAPILinhVuc;
 import com.ntmhien.ailatrieuphu.music.MusicManager;
 import com.ntmhien.ailatrieuphu.R;
 
 import java.util.concurrent.ExecutionException;
 
 public class MenuActivity extends AppCompatActivity {
-
-    MusicManager musicManager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +23,7 @@ public class MenuActivity extends AppCompatActivity {
 
     public void btnNewGame(View v) throws ExecutionException, InterruptedException {
         Button btn = (Button) v;
-        String lst = new GetAPICauHoi(this).execute(v.getId() == R.id.btnNewGame ? "1" : "2").get();
-
-        musicManager = new MusicManager();
-        musicManager.setNhacBatDauGame(MenuActivity.this);
+        String lst = new GetAPILinhVuc(this).execute().get();
     }
     public void onClick(View v) {
         switch (v.getId()) {

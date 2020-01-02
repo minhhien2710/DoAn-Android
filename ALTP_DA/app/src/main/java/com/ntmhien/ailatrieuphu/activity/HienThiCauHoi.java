@@ -58,6 +58,9 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cauhoi);
 
+        musicManager = new MusicManager();
+        musicManager.setNhacBatDauGame(HienThiCauHoi.this);
+
         txt_DA = new TextView[4];
 
         goiChoNguoiThan = new GoiChoNguoiThan(this);
