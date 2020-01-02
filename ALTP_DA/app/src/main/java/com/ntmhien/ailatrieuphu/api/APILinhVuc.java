@@ -8,12 +8,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class APILinhVuc {
-    static String getLinhVuc(String id) {
+    static String getLinhVuc() {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://192.168.1.3:8000/api/linh-vuc?id="+id);
+            URL requestURL = new URL("http://192.168.1.3:8000/api/linh_vuc");
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

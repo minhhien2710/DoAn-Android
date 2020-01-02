@@ -21,6 +21,6 @@ public class GetAPILinhVuc extends AsyncTask<String, String, String> {
     }
     @Override
     protected String doInBackground(String... level) {
-        return APILinhVuc.getLinhVuc(level[0]);
+        return APILinhVuc.getLinhVuc();
     }
 }

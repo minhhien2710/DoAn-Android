@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import com.ntmhien.ailatrieuphu.R;
 import org.json.JSONArray;
@@ -23,15 +25,21 @@ public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickLis
     private ArrayList<LinhVuc> lst_linhvuc;
     private ToggleButton togMusic;
     private ToggleButton togSound;
-
-    int pos = 0;
+    private Button btn_lv[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linh_vuc);
 
+        btn_lv = new Button[4];
+        btn_lv[0] = findViewById(R.id.button1);
+        btn_lv[1] = findViewById(R.id.button2);
+        btn_lv[2] = findViewById(R.id.button3);
+        btn_lv[3] = findViewById(R.id.button4);
+
         initView();
+        setLinhVuc();
     }
     private void initView() {
         drawerLayout = (DrawerLayout)findViewById(R.id.dlmain);
@@ -49,19 +57,15 @@ public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickLis
         final String jSonString = intent.getStringExtra("message");
 
         if (get_lst_linhvuc(jSonString) == true) {
-            m_txt_num.setText("Câu: 1");
-            m_txt_content.setText(lst_cauhoi.get(number.get(pos)).NoiDung);
-            txt_DA[0].setText("A. " + lst_cauhoi.get(number.get(pos)).PhuongAn1);
+            for(int i=0;i<jSonString.length();i++){
+                btn_lv[i].setText(lst_linhvuc.get(i).TenLinhVuc);
+            }
         } else {
-            m_txt_content.setText("API không hoạt động.");
-            m_txt_num.setVisibility(View.INVISIBLE);
-            txt_DA[0].setVisibility(View.INVISIBLE);
+            btn_lv[0].setVisibility(View.INVISIBLE);
+            btn_lv[1].setVisibility(View.INVISIBLE);
+            btn_lv[2].setVisibility(View.INVISIBLE);
+            btn_lv[3].setVisibility(View.INVISIBLE);
         }
-    }
-
-    public void ShowLinhVuc(int pos) {
-        txt_DA[0].setBackgroundResource(R.drawable.answer_background_normal);
-        txt_DA[1].setBackgroundResource(R.drawable.answer_background_normal);
     }
 
     private Boolean get_lst_linhvuc(String jSonString) {
