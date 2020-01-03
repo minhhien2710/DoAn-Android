@@ -155,12 +155,7 @@ public class MusicManager{
 
     public void setNhacThuaCuoc(Activity activity){
         addMusic();
-
-        Random rd = new Random();
-        int rdInt = rd.nextInt(2) + 1;
-
-        if(rdInt==1)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(13).getFile1());
-        else if (rdInt==2)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(13).getFile2());
+        mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(13).getFile1());
         mediaPlayer.start();
     }
 

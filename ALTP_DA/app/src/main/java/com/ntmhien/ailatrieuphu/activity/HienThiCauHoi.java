@@ -197,18 +197,33 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 quiz.PhuongAn3 = jb.getString("phuong_an_c");
                 quiz.PhuongAn4 = jb.getString("phuong_an_d");
                 quiz.DapAn = jb.getString("dap_an");
+                quiz.DoKho = jb.getString("do_kho");
                 quiz.Chon = "0";
                 lst_cauhoi.add(quiz);
             }
 
-            //Random câu hỏi
+            //Random câu hỏi và chia độ khó
             Random rd = new Random();
             for (int i = 0; i < num; i++) {
-                while (true) {
-                    Integer next = rd.nextInt(num);
-                    if (!number.contains(next)) {
-                        number.add(next);
-                        break;
+                if (i<5){
+                    while (true) {
+                        Integer next = rd.nextInt(num);
+                        if (!number.contains(next) && (lst_cauhoi.get(next).DoKho).equals("1")){
+                            number.add(next);
+                            break;
+                        }
+                    }
+                }
+                else {
+                    while (true) {
+                        Integer next = rd.nextInt(num);
+                        if(!number.contains(next) && (lst_cauhoi.get(next).DoKho).equals("1")){
+                            i++;
+                            break;
+                        }else if(!number.contains(next) && (lst_cauhoi.get(next).DoKho).equals("2")){
+                            number.add(next);
+                            break;
+                        }
                     }
                 }
             }
@@ -338,7 +353,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     }
 
     private void updatePoint(){
-        point = point + 1000;
+        point = point + sttcau*1000;
         m_Point.setText("Điểm: " + point);
     }
 

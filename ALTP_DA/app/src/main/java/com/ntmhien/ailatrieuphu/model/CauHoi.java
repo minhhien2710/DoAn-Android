@@ -7,6 +7,7 @@ public class CauHoi {
     public String PhuongAn3;
     public String PhuongAn4;
     public String DapAn;
+    public String DoKho;
     public String Chon;
 
     public CauHoi() {
