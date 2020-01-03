@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.ntmhien.ailatrieuphu.music.MusicManager;
 import com.ntmhien.ailatrieuphu.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button buttonDangNhap;
     MusicManager musicManager;
@@ -31,22 +31,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        musicManager = new MusicManager();
+        musicManager.setNhacNen(MainActivity.this);
+
+        buttonDangNhap = (Button) findViewById(R.id.btnDangNhap);
+        buttonDangNhap.setOnClickListener(this);
+
         sigin = findViewById(R.id.sign_in_button);
-        sigin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.sign_in_button:
-                        signIn();
-                        break;
-                    // ...
-                }
-            }
-        });
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        sigin.setOnClickListener(this);
+
+
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.sign_in_button:
+                signIn();
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestEmail()
+                        .build();
+                mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+                break;
+            case R.id.btnDangNhap:
+                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btnDangky:
+                break;
+            default:
+                break;
+        }
     }
 
     private void signIn() {
@@ -82,4 +96,5 @@ public class MainActivity extends AppCompatActivity {
             Log.v("Erro", "signInResult:failed code=" + e.getStatusCode());
         }
     }
+
 }
