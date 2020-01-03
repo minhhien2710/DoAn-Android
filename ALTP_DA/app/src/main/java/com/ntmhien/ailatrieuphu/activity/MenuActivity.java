@@ -23,6 +23,7 @@ public class MenuActivity extends AppCompatActivity {
         Button btn = (Button) v;
         String lst = new GetAPILinhVuc(this).execute().get();
     }
+
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnProfile:

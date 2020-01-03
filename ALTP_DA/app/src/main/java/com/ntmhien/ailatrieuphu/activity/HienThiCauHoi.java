@@ -185,17 +185,18 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private Boolean get_lst_cauhoi(String jSonString) {
         try {
             lst_cauhoi = new ArrayList();
-            JSONArray jr = new JSONArray(jSonString);
+            JSONObject data = new JSONObject(jSonString);
+            JSONArray jr = data.getJSONArray("data");
             int num = jr.length();
             for (int i = 0; i < num; i++) {
                 JSONObject jb = (JSONObject) jr.getJSONObject(i);
                 CauHoi quiz = new CauHoi();
-                quiz.NoiDung = jb.getString("NoiDung");
-                quiz.PhuongAn1 = jb.getString("DapAn1");
-                quiz.PhuongAn2 = jb.getString("DapAn2");
-                quiz.PhuongAn3 = jb.getString("DapAn3");
-                quiz.PhuongAn4 = jb.getString("DapAn4");
-                quiz.DapAn = jb.getString("DA_Dung");
+                quiz.NoiDung = jb.getString("noi_dung");
+                quiz.PhuongAn1 = jb.getString("phuong_an_a");
+                quiz.PhuongAn2 = jb.getString("phuong_an_b");
+                quiz.PhuongAn3 = jb.getString("phuong_an_c");
+                quiz.PhuongAn4 = jb.getString("phuong_an_d");
+                quiz.DapAn = jb.getString("dap_an");
                 quiz.Chon = "0";
                 lst_cauhoi.add(quiz);
             }

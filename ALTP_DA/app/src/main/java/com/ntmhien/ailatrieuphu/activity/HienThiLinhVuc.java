@@ -15,11 +15,16 @@ import com.ntmhien.ailatrieuphu.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.ntmhien.ailatrieuphu.api.GetAPICauHoi;
 import com.ntmhien.ailatrieuphu.model.LinhVuc;
+import com.ntmhien.ailatrieuphu.music.MusicManager;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickListener {
+    private MusicManager musicManager;
     private DrawerLayout drawerLayout;
     private ImageView Prof;
     private ArrayList<LinhVuc> lst_linhvuc;
@@ -57,8 +62,25 @@ public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickLis
         final String jSonString = intent.getStringExtra("message");
 
         if (get_lst_linhvuc(jSonString) == true) {
-            for(int i=0;i<4;i++){
+            for(int i = 0; i<4; i++){
                 btn_lv[i].setText(lst_linhvuc.get(i).TenLinhVuc);
+                final int finalI = i;
+                btn_lv[i].setOnClickListener(new View.OnClickListener()
+                {
+                    @Override
+                    public void onClick(View v)
+                    {
+                        try {
+                            String lst = new GetAPICauHoi(HienThiLinhVuc.this).execute(lst_linhvuc.get(finalI).IDLinhVuc).get();
+                            musicManager = new MusicManager();
+                            musicManager.setNhacBatDauGame(HienThiLinhVuc.this);
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
             }
         } else {
             btn_lv[0].setVisibility(View.INVISIBLE);
