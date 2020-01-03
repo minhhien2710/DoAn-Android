@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sigin = findViewById(R.id.sign_in_button);
         sigin.setOnClickListener(this);
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
 
     }
     @Override
@@ -47,10 +53,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.sign_in_button:
                 signIn();
-                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestEmail()
-                        .build();
-                mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
                 break;
             case R.id.btnDangNhap:
                 Intent intent = new Intent(MainActivity.this, MenuActivity.class);
@@ -87,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
-            Intent intent = new Intent(MainActivity.this, QL_TaiKhoan.class);
+            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
             startActivity(intent);
 
         } catch (ApiException e) {

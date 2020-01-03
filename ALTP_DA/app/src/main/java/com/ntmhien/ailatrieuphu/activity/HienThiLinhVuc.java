@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +12,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.ntmhien.ailatrieuphu.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,11 +36,14 @@ public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickLis
     private ToggleButton togMusic;
     private ToggleButton togSound;
     private Button btn_lv[];
+    private TextView nguoichoi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linh_vuc);
+
+        nguoichoi = findViewById(R.id.name_play);
 
         btn_lv = new Button[4];
         btn_lv[0] = findViewById(R.id.button1);
@@ -45,6 +53,17 @@ public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickLis
 
         initView();
         setLinhVuc();
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            Uri personPhoto = acct.getPhotoUrl();
+
+            Glide.with(this).load(String.valueOf(personPhoto)).into(Prof);
+            nguoichoi.setText(personName);
+        }
+
+
     }
     private void initView() {
         drawerLayout = (DrawerLayout)findViewById(R.id.dlmain);

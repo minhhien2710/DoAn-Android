@@ -3,6 +3,7 @@ package com.ntmhien.ailatrieuphu.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,8 +24,10 @@ import com.ntmhien.ailatrieuphu.R;
 
 public class QL_TaiKhoan extends AppCompatActivity {
 
+
+    EditText name,email;
     ImageView imageView;
-    EditText name,email,id;
+    TextView textView;
     Button signOut;
     GoogleSignInClient mGoogleSignInClient;
     @Override
@@ -37,10 +40,26 @@ public class QL_TaiKhoan extends AppCompatActivity {
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        imageView =  findViewById(R.id.imgView);
+        imageView = findViewById(R.id.imgView);
+        textView = findViewById(R.id.txtTen);
         name = findViewById(R.id.txtTK);
         email = findViewById(R.id.txtEmail);
-        id = findViewById(R.id.txtMK);
+
+//        textView.setText(value1);
+//        name.setText(value1);
+//        email.setText(value2);
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            String personEmail = acct.getEmail();
+            Uri personPhoto = acct.getPhotoUrl();
+
+            name.setText(personName);
+            email.setText(personEmail);
+            textView.setText(personName);
+            Glide.with(this).load(String.valueOf(personPhoto)).into(imageView);
+        }
+
         signOut = findViewById(R.id.btnLogOut);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,19 +74,6 @@ public class QL_TaiKhoan extends AppCompatActivity {
             }
         });
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
-            String personId = acct.getId();
-            Uri personPhoto = acct.getPhotoUrl();
-
-            name.setText(personName);
-
-            email.setText(personEmail);
-            id.setText(personId);
-            Glide.with(this).load(String.valueOf(personPhoto)).into(imageView);
-        }
     }
     private void signOut() {
         mGoogleSignInClient.signOut()
@@ -75,8 +81,11 @@ public class QL_TaiKhoan extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         finish();
+                        Intent intent = new Intent(QL_TaiKhoan.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 });
     }
+
 
 }

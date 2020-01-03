@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -15,6 +16,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.ntmhien.ailatrieuphu.dialogs.GoiChoNguoiThan;
 import com.ntmhien.ailatrieuphu.dialogs.TroGiupKhangGia;
 import com.ntmhien.ailatrieuphu.model.CauHoi;
@@ -43,6 +47,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
     private TextView m_txt_content;
     private TextView m_Point;
     private TextView txt_DA[];
+    private TextView tentk;
     private ImageView btnCall, btnAudience, btnCredit, btn5050, btnChange;
     private DrawerLayout dl;
     private ImageView Prof;
@@ -67,6 +72,15 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         findViewByIds();
         setEvents();
         setCauHoi();
+
+        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
+        if (acct != null) {
+            String personName = acct.getDisplayName();
+            Uri personPhoto = acct.getPhotoUrl();
+
+            Glide.with(this).load(String.valueOf(personPhoto)).into(Prof);
+            tentk.setText(personName);
+        }
     }
 
     private void findViewByIds() {
@@ -78,6 +92,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         txt_DA[3] = findViewById(R.id.D);
 
         m_Point = findViewById(R.id.txtPoint);
+        tentk = findViewById(R.id.txtName);
 
         progressBar = findViewById(R.id.timeProgressBar);
 

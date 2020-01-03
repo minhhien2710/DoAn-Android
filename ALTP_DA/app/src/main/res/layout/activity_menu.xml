@@ -14,10 +14,11 @@
 
 
         <ImageView
-            android:layout_marginLeft="50dp"
-            android:id="@+id/imageView3"
+            android:layout_marginLeft="55dp"
+            android:id="@+id/imgvat"
             android:layout_width="200dp"
             android:layout_height="200dp"
+            android:background="@drawable/btn_bg"
             app:srcCompat="@drawable/ic_no_image" />
 
         <TextView
@@ -35,11 +36,11 @@
             android:layout_weight="1">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/play_layout_txt_money"
-                android:src="@drawable/profile_icon_money" />
+                android:src="@drawable/diamond" />
 
             <TextView
                 android:id="@+id/play_layout_txt_money"
