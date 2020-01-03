@@ -403,35 +403,37 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             case R.id.btnCredit:
                 break;
             case R.id.btn50_50:
-                btn5050.setEnabled(false);
-                Random random = new Random();
-                int count = 0;
-                int b = 0;
-
-                while (count < 2) {
-                    int temp = random.nextInt(4) + 1;
-                    if (temp != getDapAnDung() && temp != b) {
-                        b = temp;
-                        txt_DA[b - 1].setEnabled(false);
-                        txt_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide);
-                        txt_DA[b - 1].setText("");
-                        count++;
-                    }
-                }
-                break;
-            case R.id.btnChuyencau:
-                btnChange.setEnabled(false);
                 handler = new Handler();
+                btn5050.setEnabled(false);
+                musicManager.setNhac5050(HienThiCauHoi.this);
+
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //Music
-                        musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
-                        //Câu kế tiếp
-                        sttcau--;
-                        setCauTiepTheo();
+                        Random random = new Random();
+                        int count = 0;
+                        int b = 0;
+
+                        while (count < 2) {
+                            int temp = random.nextInt(4) + 1;
+                            if (temp != getDapAnDung() && temp != b) {
+                                b = temp;
+                                txt_DA[b - 1].setEnabled(false);
+                                txt_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide);
+                                txt_DA[b - 1].setText("");
+                                count++;
+                            }
+                        }
                     }
-                }, 0);
+                }, 2700);
+                break;
+            case R.id.btnChuyencau:
+                btnChange.setEnabled(false);
+                //Music
+                musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
+                //Câu kế tiếp
+                sttcau--;
+                setCauTiepTheo();
                 break;
             case R.id.btnCall:
                 btnCall.setEnabled(false);

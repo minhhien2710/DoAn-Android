@@ -30,14 +30,15 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:layout_marginBottom="20dp"
             android:id="@+id/txtMK"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/txt_border"
             android:ems="10"
             android:hint="Mật khẩu"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:password="true" />
 
         <Button
             android:layout_marginBottom="5dp"
@@ -64,11 +65,11 @@
             android:background="@drawable/btn_radius_blue"
             android:text="Quên mật khẩu"
             android:textColor="#F1F4F7"/>
+
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_radius_blue"/>
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

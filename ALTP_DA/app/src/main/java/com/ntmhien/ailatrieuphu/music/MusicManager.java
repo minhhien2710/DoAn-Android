@@ -40,6 +40,8 @@ public class MusicManager{
         musicArrayList.add(new Music("16-Đáp Án Đúng Là B",R.raw.lose_b,R.raw.lose_b2));
         musicArrayList.add(new Music("17-Đáp Án Đúng Là C",R.raw.lose_c,R.raw.lose_c2));
         musicArrayList.add(new Music("18-Đáp Án Đúng Là D",R.raw.lose_d,R.raw.lose_d2));
+        //Music 50 50
+        musicArrayList.add(new Music("19-Trợ giúp 50 50",R.raw.sound5050,R.raw.sound5050_2));
     }
 
     public void setNhacNen(Activity activity){
@@ -189,5 +191,16 @@ public class MusicManager{
             default:
                 break;
         }
+    }
+
+    public void setNhac5050(Activity activity){
+        addMusic();
+
+        Random rd = new Random();
+        int rdInt = rd.nextInt(2) + 1;
+
+        if(rdInt==1)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(19).getFile1());
+        else if (rdInt==2)mediaPlayer = MediaPlayer.create(activity,musicArrayList.get(19).getFile2());
+        mediaPlayer.start();
     }
 }

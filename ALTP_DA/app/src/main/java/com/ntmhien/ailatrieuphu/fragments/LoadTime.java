@@ -61,19 +61,9 @@ public class LoadTime extends AsyncTask<Integer,Integer,Void> {
 
         Toast.makeText(contextParent, "Ôi không! Bạn đã hết thời gian trả lời!", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder b = new AlertDialog.Builder(contextParent);
-        b.setTitle("Tổng điểm của bạn là: "+hienThiCauHoi.getPoint());
-        b.setIcon(R.drawable.profile_icon_money);
-        b.setMessage("Bạn có muốn sử dụng 500 Credit để chơi tiếp hay không? ");
-        b.setNegativeButton("Sử dụng Credit", new DialogInterface. OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                hienThiCauHoi.updatePoint();
-                musicManager.setNhacCauHoiTiepTheo(contextParent);
-                //Câu kế tiếp
-                hienThiCauHoi.setCauTiepTheo();
-            }});
-        b.setPositiveButton("Dừng cuộc chơi", new DialogInterface.OnClickListener() {
+        b.setTitle("Hết thời gian! ");
+        b.setMessage("Rất tiếc bạn đã hết thời gian trả lời! ");
+        b.setPositiveButton("Thoát", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 musicManager.setNhacThuaCuoc(contextParent);
