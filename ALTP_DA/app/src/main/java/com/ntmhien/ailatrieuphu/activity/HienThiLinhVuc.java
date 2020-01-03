@@ -57,7 +57,7 @@ public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickLis
         final String jSonString = intent.getStringExtra("message");
 
         if (get_lst_linhvuc(jSonString) == true) {
-            for(int i=0;i<jSonString.length();i++){
+            for(int i=0;i<4;i++){
                 btn_lv[i].setText(lst_linhvuc.get(i).TenLinhVuc);
             }
         } else {
@@ -71,11 +71,13 @@ public class HienThiLinhVuc extends AppCompatActivity implements View.OnClickLis
     private Boolean get_lst_linhvuc(String jSonString) {
         try {
             lst_linhvuc = new ArrayList();
-            JSONArray jr = new JSONArray(jSonString);
+            JSONObject data = new JSONObject(jSonString);
+            JSONArray jr = data.getJSONArray("data");
             int num = jr.length();
             for (int i = 0; i < num; i++) {
                 JSONObject jb = (JSONObject) jr.getJSONObject(i);
                 LinhVuc quiz = new LinhVuc();
+                quiz.IDLinhVuc = jb.getString("id");
                 quiz.TenLinhVuc = jb.getString("ten_linh_vuc");
                 lst_linhvuc.add(quiz);
             }
