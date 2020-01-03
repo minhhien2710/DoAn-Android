@@ -51,7 +51,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
 
     List<Integer> number = new ArrayList<Integer>();
 
-    int pos = 0;
+    public int pos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -301,10 +301,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 //Music
                 musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
                 //Câu kế tiếp
-                pos++;
-                sttcau++;
-                if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
-                ShowQuestion(pos);
+                setCauTiepTheo();
             }
         }, 8000);
     }
@@ -324,10 +321,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                 updatePoint();
                 musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
                 //Câu kế tiếp
-                pos++;
-                sttcau++;
-                if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
-                ShowQuestion(pos);
+                setCauTiepTheo();
             }});
         b.setPositiveButton("Dừng cuộc chơi", new DialogInterface.OnClickListener() {
             @Override
@@ -352,9 +346,20 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         btn5050.setClickable(b);
     }
 
-    private void updatePoint(){
+    public void updatePoint(){
         point = point + sttcau*1000;
         m_Point.setText("Điểm: " + point);
+    }
+
+    public int getPoint(){
+        return point;
+    }
+
+    public void setCauTiepTheo(){
+        pos++;
+        sttcau++;
+        if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
+        ShowQuestion(pos);
     }
 
     private int getDapAnDung(){
@@ -408,9 +413,8 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
                         //Music
                         musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
                         //Câu kế tiếp
-                        pos++;
-                        if (pos >= lst_cauhoi.size()) pos = lst_cauhoi.size() - 1;
-                        ShowQuestion(pos);
+                        sttcau--;
+                        setCauTiepTheo();
                     }
                 }, 0);
                 break;
