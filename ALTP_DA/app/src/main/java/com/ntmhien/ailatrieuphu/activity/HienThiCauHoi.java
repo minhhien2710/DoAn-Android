@@ -366,10 +366,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         m_Point.setText("Điểm: " + point);
     }
 
-    public int getPoint(){
-        return point;
-    }
-
     public void setCauTiepTheo(){
         pos++;
         sttcau++;
@@ -381,6 +377,35 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         String DA = lst_cauhoi.get(number.get(pos)).DapAn;
         int iDA = (DA.equals("A") ? 1 : DA.equals("B") ? 2 : DA.equals("C") ? 3 : 4);
         return iDA;
+    }
+
+    public void stopGame() {
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Bạn có thật sự muốn thoát?");
+        b.setMessage("Bạn sẽ không được lưu điểm nếu thoát giữa chừng. ");
+        b.setNegativeButton("Thoát", new DialogInterface. OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                musicManager.setNhacThuaCuoc(HienThiCauHoi.this);
+                HienThiCauHoi.this.finish();
+            }});
+        b.setPositiveButton("Huỷ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        b.create().show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (Thread.currentThread().isAlive()) {
+            stopGame();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
