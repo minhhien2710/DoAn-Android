@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_muacredit"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -20,10 +21,143 @@
         android:layout_height="wrap_content"
         android:text="Gói credit"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:padding="16dp"
-        android:id="@android:id/list"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_weight="4">
+
+        <TextView
+            android:id="@+id/txtGoiA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Gói A"></TextView>
+
+        <ImageView
+            android:id="@+id/imgGoiA"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/txtGoiA"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="20dp"
+            app:srcCompat="@drawable/diamond3"></ImageView>
+
+        <TextView
+            android:id="@+id/txtGiaTienA"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/imgGoiA"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="$450"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/txtGoiB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/txtGoiA"
+            android:text="Gói B"></TextView>
+
+        <ImageView
+            android:id="@+id/imgGoiB"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/txtGoiB"
+            android:layout_marginLeft="100dp"
+            android:layout_toEndOf="@+id/imgGoiA"
+            app:srcCompat="@drawable/diamond3"></ImageView>
+
+        <TextView
+            android:id="@+id/txtGoiC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtGiaTienA"
+            android:layout_marginLeft="85dp"
+            android:layout_marginTop="40dp"
+            android:text="Gói C"></TextView>
+
+        <ImageView
+            android:id="@+id/imgGoiC"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/txtGoiC"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            app:srcCompat="@drawable/diamond3"></ImageView>
+
+        <TextView
+            android:id="@+id/txtGiaTienC"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/imgGoiC"
+            android:layout_marginStart="60dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="$95"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/txtGiaTienB"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/imgGoiB"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/txtGiaTienA"
+            android:gravity="center"
+            android:text="$290"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/txtGoiD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtGiaTienB"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/txtGoiC"
+            android:text="Gói D"></TextView>
+
+        <ImageView
+            android:id="@+id/imgGoiD"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@id/txtGoiD"
+            android:layout_marginLeft="100dp"
+            android:layout_toEndOf="@+id/imgGoiC"
+            app:srcCompat="@drawable/diamond3"></ImageView>
+
+        <TextView
+            android:id="@+id/txtGiaTienD"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/imgGoiD"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/txtGiaTienC"
+            android:gravity="center"
+            android:text="$50"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"></TextView>
+    </RelativeLayout>
 </LinearLayout>

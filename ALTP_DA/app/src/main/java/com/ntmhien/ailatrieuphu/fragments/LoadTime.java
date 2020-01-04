@@ -3,14 +3,24 @@ package com.ntmhien.ailatrieuphu.fragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ntmhien.ailatrieuphu.R;
 import com.ntmhien.ailatrieuphu.activity.HienThiCauHoi;
+import com.ntmhien.ailatrieuphu.model.CauHinhApp;
+import com.ntmhien.ailatrieuphu.model.LinhVuc;
 import com.ntmhien.ailatrieuphu.music.MusicManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class LoadTime extends AsyncTask<Integer,Integer,Void> {
 
@@ -19,6 +29,8 @@ public class LoadTime extends AsyncTask<Integer,Integer,Void> {
     Activity contextParent;
     MusicManager musicManager;
     HienThiCauHoi hienThiCauHoi;
+    private ArrayList<CauHinhApp> lst_cauhinhapp;
+    int time=0;
 
     public LoadTime(Activity contextParent) {
         this.contextParent = contextParent;
@@ -61,19 +73,9 @@ public class LoadTime extends AsyncTask<Integer,Integer,Void> {
 
         Toast.makeText(contextParent, "Ôi không! Bạn đã hết thời gian trả lời!", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder b = new AlertDialog.Builder(contextParent);
-        b.setTitle("Tổng điểm của bạn là: "+hienThiCauHoi.getPoint());
-        b.setIcon(R.drawable.profile_icon_money);
-        b.setMessage("Bạn có muốn sử dụng 500 Credit để chơi tiếp hay không? ");
-        b.setNegativeButton("Sử dụng Credit", new DialogInterface. OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which)
-            {
-                hienThiCauHoi.updatePoint();
-                musicManager.setNhacCauHoiTiepTheo(contextParent);
-                //Câu kế tiếp
-                hienThiCauHoi.setCauTiepTheo();
-            }});
-        b.setPositiveButton("Dừng cuộc chơi", new DialogInterface.OnClickListener() {
+        b.setTitle("Hết thời gian! ");
+        b.setMessage("Rất tiếc bạn đã hết thời gian trả lời! ");
+        b.setPositiveButton("Thoát", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 musicManager.setNhacThuaCuoc(contextParent);

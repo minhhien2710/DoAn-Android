@@ -366,10 +366,6 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         m_Point.setText("Điểm: " + point);
     }
 
-    public int getPoint(){
-        return point;
-    }
-
     public void setCauTiepTheo(){
         pos++;
         sttcau++;
@@ -381,6 +377,35 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
         String DA = lst_cauhoi.get(number.get(pos)).DapAn;
         int iDA = (DA.equals("A") ? 1 : DA.equals("B") ? 2 : DA.equals("C") ? 3 : 4);
         return iDA;
+    }
+
+    public void stopGame() {
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle("Bạn có thật sự muốn thoát?");
+        b.setMessage("Bạn sẽ không được lưu điểm nếu thoát giữa chừng. ");
+        b.setNegativeButton("Thoát", new DialogInterface. OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                musicManager.setNhacThuaCuoc(HienThiCauHoi.this);
+                HienThiCauHoi.this.finish();
+            }});
+        b.setPositiveButton("Huỷ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        b.create().show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (Thread.currentThread().isAlive()) {
+            stopGame();
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
@@ -403,35 +428,37 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             case R.id.btnCredit:
                 break;
             case R.id.btn50_50:
-                btn5050.setEnabled(false);
-                Random random = new Random();
-                int count = 0;
-                int b = 0;
-
-                while (count < 2) {
-                    int temp = random.nextInt(4) + 1;
-                    if (temp != getDapAnDung() && temp != b) {
-                        b = temp;
-                        txt_DA[b - 1].setEnabled(false);
-                        txt_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide);
-                        txt_DA[b - 1].setText("");
-                        count++;
-                    }
-                }
-                break;
-            case R.id.btnChuyencau:
-                btnChange.setEnabled(false);
                 handler = new Handler();
+                btn5050.setEnabled(false);
+                musicManager.setNhac5050(HienThiCauHoi.this);
+
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //Music
-                        musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
-                        //Câu kế tiếp
-                        sttcau--;
-                        setCauTiepTheo();
+                        Random random = new Random();
+                        int count = 0;
+                        int b = 0;
+
+                        while (count < 2) {
+                            int temp = random.nextInt(4) + 1;
+                            if (temp != getDapAnDung() && temp != b) {
+                                b = temp;
+                                txt_DA[b - 1].setEnabled(false);
+                                txt_DA[b - 1].setBackgroundResource(R.drawable.answer_background_hide);
+                                txt_DA[b - 1].setText("");
+                                count++;
+                            }
+                        }
                     }
-                }, 0);
+                }, 2700);
+                break;
+            case R.id.btnChuyencau:
+                btnChange.setEnabled(false);
+                //Music
+                musicManager.setNhacCauHoiTiepTheo(HienThiCauHoi.this);
+                //Câu kế tiếp
+                sttcau--;
+                setCauTiepTheo();
                 break;
             case R.id.btnCall:
                 btnCall.setEnabled(false);

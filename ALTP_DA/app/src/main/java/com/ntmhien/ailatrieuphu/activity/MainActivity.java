@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -15,12 +16,17 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.ntmhien.ailatrieuphu.api.GetAPICauHinhApp;
+import com.ntmhien.ailatrieuphu.api.GetAPINguoiCHoi;
 import com.ntmhien.ailatrieuphu.music.MusicManager;
 import com.ntmhien.ailatrieuphu.R;
+
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button buttonDangNhap;
+    private TextView tk,mk;
     MusicManager musicManager;
     SignInButton sigin;
     int RC_SIGN_IN = 0;
@@ -45,7 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-
+        tk=findViewById(R.id.txtTK);
+        mk=findViewById(R.id.txtMK);
 
     }
     @Override
@@ -55,8 +62,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 signIn();
                 break;
             case R.id.btnDangNhap:
-                Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(intent);
+                String link = "http://10.0.2.2:8000/api/dang-nhap?ten_dang_nhap="+tk.getText()+"&mat_khau="+mk.getText();
+                try {
+                    String lst = new GetAPINguoiCHoi(MainActivity.this).execute(link).get();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.btnDangky:
                 Intent intent2 = new Intent(MainActivity.this, DangKi.class);
