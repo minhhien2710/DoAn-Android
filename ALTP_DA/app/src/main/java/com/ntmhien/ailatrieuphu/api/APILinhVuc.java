@@ -13,7 +13,7 @@ public class APILinhVuc {
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://10.0.2.2:8000/api/linh_vuc");
+            URL requestURL = new URL("http://10.0.3.2:8000/api/linh_vuc");
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

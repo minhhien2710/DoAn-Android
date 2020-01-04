@@ -71,6 +71,7 @@ tools:context=".activity.DangKi">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_radius_blue"
+        android:onClick="DangKi"
         android:text="Đăng ký"
         android:textColor="#F1F4F7"
         app:layout_constraintStart_toStartOf="parent"

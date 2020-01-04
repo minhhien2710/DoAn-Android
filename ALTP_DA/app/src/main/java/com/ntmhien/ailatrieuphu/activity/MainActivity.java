@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.btnDangky:
+                Intent intent2 = new Intent(MainActivity.this, DangKi.class);
+                startActivity(intent2);
                 break;
             default:
                 break;

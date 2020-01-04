@@ -49,13 +49,14 @@
             android:textColor="#F7F1F1" />
 
         <Button
-            android:layout_marginBottom="5dp"
             android:id="@+id/btnDangky"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/btn_radius_blue"
+            android:onClick="onClick"
             android:text="Đăng ký"
-            android:textColor="#F1F4F7"/>
+            android:textColor="#F1F4F7" />
         <Button
             android:layout_marginBottom="5dp"
             android:id="@+id/btnQuenMK"
