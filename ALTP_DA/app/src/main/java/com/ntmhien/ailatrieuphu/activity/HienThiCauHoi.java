@@ -21,6 +21,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.ntmhien.ailatrieuphu.dialogs.GoiChoNguoiThan;
 import com.ntmhien.ailatrieuphu.dialogs.TroGiupKhangGia;
+import com.ntmhien.ailatrieuphu.model.CauHinhApp;
 import com.ntmhien.ailatrieuphu.model.CauHoi;
 import com.ntmhien.ailatrieuphu.fragments.LoadTime;
 import com.ntmhien.ailatrieuphu.R;
@@ -388,6 +389,7 @@ public class HienThiCauHoi extends AppCompatActivity implements View.OnClickList
             public void onClick(DialogInterface dialog, int which)
             {
                 musicManager.setNhacThuaCuoc(HienThiCauHoi.this);
+                loadTime.cancel(true);
                 HienThiCauHoi.this.finish();
             }});
         b.setPositiveButton("Huỷ", new DialogInterface.OnClickListener() {

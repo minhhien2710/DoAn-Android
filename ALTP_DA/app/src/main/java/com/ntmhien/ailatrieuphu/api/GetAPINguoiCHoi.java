@@ -28,6 +28,11 @@ public class GetAPINguoiCHoi extends AsyncTask<String, String, String> {
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
 
+        if(s==null){
+            Toast.makeText(m_con, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin tài khoản", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         try {
             JSONObject data = new JSONObject(s);
             boolean status = data.getBoolean("status");
@@ -39,10 +44,7 @@ public class GetAPINguoiCHoi extends AsyncTask<String, String, String> {
 
                 Activity activity = (Activity) m_con;
                 activity.startActivity(intent);
-            } else {
-                Toast.makeText(m_con, "Đăng nhập thất bại! Vui lòng kiểm tra lại thông tin tài khoản", Toast.LENGTH_SHORT).show();
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

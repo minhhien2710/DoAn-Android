@@ -28,9 +28,6 @@ public class LoadTime extends AsyncTask<Integer,Integer,Void> {
     private TextView textView;
     Activity contextParent;
     MusicManager musicManager;
-    HienThiCauHoi hienThiCauHoi;
-    private ArrayList<CauHinhApp> lst_cauhinhapp;
-    int time=0;
 
     public LoadTime(Activity contextParent) {
         this.contextParent = contextParent;
