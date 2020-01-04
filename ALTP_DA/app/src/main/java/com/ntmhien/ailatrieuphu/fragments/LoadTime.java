@@ -3,14 +3,24 @@ package com.ntmhien.ailatrieuphu.fragments;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ntmhien.ailatrieuphu.R;
 import com.ntmhien.ailatrieuphu.activity.HienThiCauHoi;
+import com.ntmhien.ailatrieuphu.model.CauHinhApp;
+import com.ntmhien.ailatrieuphu.model.LinhVuc;
 import com.ntmhien.ailatrieuphu.music.MusicManager;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class LoadTime extends AsyncTask<Integer,Integer,Void> {
 
@@ -19,6 +29,8 @@ public class LoadTime extends AsyncTask<Integer,Integer,Void> {
     Activity contextParent;
     MusicManager musicManager;
     HienThiCauHoi hienThiCauHoi;
+    private ArrayList<CauHinhApp> lst_cauhinhapp;
+    int time=0;
 
     public LoadTime(Activity contextParent) {
         this.contextParent = contextParent;

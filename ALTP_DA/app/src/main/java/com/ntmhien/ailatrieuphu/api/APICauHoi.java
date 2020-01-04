@@ -13,7 +13,7 @@ public class APICauHoi {
         BufferedReader reader = null;
         String result = null;
         try {
-            URL requestURL = new URL("http://10.0.3.2:8000/api/cau-hoi?linh_vuc="+Level);
+            URL requestURL = new URL("http://10.0.2.2:8000/api/cau-hoi?linh_vuc="+Level);
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();

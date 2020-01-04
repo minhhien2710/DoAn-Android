@@ -7,34 +7,34 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class APIGoiCredit {
-    public static String getAPIGoiCredit(){
+public class APICauHinhApp {
+    static String getCauHinhApp() {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
-        String jSonGoiCredit = null;
-        try{
-            URL requestURL = new URL("http://10.0.2.2:8000/api/goi_credit");
+        String result = null;
+        try {
+            URL requestURL = new URL("http://10.0.2.2:8000/api/cau-hinh-app/thoi-gian-tra-loi");
             urlConnection = (HttpURLConnection) requestURL.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
-
             InputStream inputStream = urlConnection.getInputStream();
             reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder builder = new StringBuilder();
             String line;
-            while((line = reader.readLine())!=null){
+            while ((line = reader.readLine()) != null) {
                 builder.append(line);
             }
-            jSonGoiCredit = builder.toString();
-        }catch (IOException e){
+            if (builder.length() == 0) {
+                return null;
+            }
+            result = builder.toString();
+        } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if(urlConnection != null)
-            {
+        } finally {
+            if (urlConnection != null) {
                 urlConnection.disconnect();
             }
-            if(reader != null)
-            {
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -42,6 +42,6 @@ public class APIGoiCredit {
                 }
             }
         }
-        return jSonGoiCredit;
+        return result;
     }
 }
