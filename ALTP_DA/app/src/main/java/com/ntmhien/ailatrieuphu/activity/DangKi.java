@@ -28,7 +28,7 @@ public class DangKi extends AppCompatActivity {
     private ImageView hinh;
     private Bitmap bitmap;
     private  String ten_đang_nhap,email,mat_khau,xn_mat_khau;
-    private String duongdan="http://10.0.3.2:8000/api/nguoi-choi/them-nguoi-choi";
+    private String duongdan="http://10.0.2.2:8000/api/nguoi-choi/them-nguoi-choi";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
